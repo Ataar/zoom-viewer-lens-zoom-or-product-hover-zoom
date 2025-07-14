@@ -1,0 +1,28 @@
+.bg-dark {
+    background-color: #040505!important;
+}
+
+.navbar-expand-lg 
+{
+    color: white;
+}
+
+.nav-link {
+  margin: 6px 10px 0;
+  font-family: georgia;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: white !important;
+}
+
+.navbar-dark .navbar-brand {
+  color: white !important;
+}
+
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+.navbar-dark .nav-link:hover {
+  color: #f8f9fa !important; /* lighter white on hover */
+}
