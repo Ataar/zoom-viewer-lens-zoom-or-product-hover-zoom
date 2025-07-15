@@ -21,7 +21,7 @@ unSubscribe !: Subscription
       this.unSubscribe =  this.f.getNum().subscribe(res=>{
         if(res % 2===0)
         {
-          console.log(res);
+          // console.log(res);
             this.data.push(res)
           }
 

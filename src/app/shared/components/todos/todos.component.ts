@@ -1,5 +1,4 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { OfService } from '../../services/of.service';
 import { Subscription } from 'rxjs';
 import { Of2Service } from '../../services/of2.service';
 
@@ -8,7 +7,7 @@ import { Of2Service } from '../../services/of2.service';
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent implements OnInit  {
+export class TodosComponent implements OnInit ,OnDestroy {
   
  
 
@@ -22,7 +21,7 @@ unSubscribe !: Subscription
       this.unSubscribe =  this.f.getNum().subscribe(res=>{
         if(res%2===1)
         {
-          console.log(res);
+          // console.log(res);
             this.data.push(res)
           }
 
@@ -30,7 +29,7 @@ unSubscribe !: Subscription
 
       })
 
-       console.log(this.data)
+      //  console.log(this.data)
        
   }
   

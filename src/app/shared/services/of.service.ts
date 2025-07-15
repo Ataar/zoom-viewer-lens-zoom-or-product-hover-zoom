@@ -1,27 +1,22 @@
+
 import { Injectable } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root' // Angular ko batata hai ki ye service root injector me available ho
 })
 export class OfService {
 
- onSubscribe$=interval(10)
-   
-      
-  constructor(
-    
-  ) { }
+  // ✅ Best practice: Observable property ke naam ke end me $ lagate hain, jo indicate karta hai ki ye ek Observable hai
+  onSubscribe$: Observable<number> = interval(10);  // interval(10) ek infinite observable emit karta hai har 10ms me
 
-   getObj():Observable<number>
-   {
-     return this.onSubscribe$
-   }
+  constructor() { }
+
+  // ✅ Observable return karne wala method
+  getObj(): Observable<number> {
+    return this.onSubscribe$;
+  }
 }
-
-   
- 
-
 
 
 
