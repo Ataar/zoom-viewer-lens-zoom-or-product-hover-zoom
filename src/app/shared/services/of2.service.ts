@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import { filter, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -10,11 +10,19 @@ export class Of2Service {
    
   constructor() { }
 
-   getNum():Observable<number>
+   getNum01():Observable<number>
    {
     
-    return this.evenOdd$
+    return this.evenOdd$.pipe(
+      filter(num=>num % 2===0)
+    )
    }
    
-   
+   getNum02():Observable<number>
+   {
+    
+    return this.evenOdd$.pipe(
+      filter(num=>num % 2===1)
+    )
+   }
 }

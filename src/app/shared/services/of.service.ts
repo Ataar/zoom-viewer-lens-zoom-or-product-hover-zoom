@@ -16,8 +16,10 @@ onSubscribe$: Observable<number> = interval(10);
 
   // ✅ Observable return karne wala method
   getObj(): Observable<number> {
+    
     return this.onSubscribe$;
   }
+  
 }
 
 

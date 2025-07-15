@@ -14,7 +14,6 @@ import { HomeComponent } from './shared/components/home/home.component';
 import { PostsComponent } from './shared/components/posts/posts.component';
 import { TodosComponent } from './shared/components/todos/todos.component';
 import { AppComponent } from './app.component';
-import { EvenOddComponent } from './shared/components/even-odd/even-odd.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,7 +21,6 @@ import { EvenOddComponent } from './shared/components/even-odd/even-odd.componen
     HomeComponent,
     PostsComponent,
     TodosComponent,
-    EvenOddComponent,
   ],
   imports: [
     BrowserModule,

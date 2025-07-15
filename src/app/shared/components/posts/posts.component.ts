@@ -18,14 +18,14 @@ unSubscribe !: Subscription
    private f : Of2Service) { }
   ngOnInit(): void {
    
-      this.unSubscribe =  this.f.getNum().subscribe(res=>{
-        if(res % 2===0)
-        {
-          // console.log(res);
-            this.data.push(res)
-          }
+      this.unSubscribe =  this.f.getNum01().subscribe(res=>{
+        // if(res % 2===0)
+        // {
+        //   // console.log(res);
+        //     this.data.push(res)
+        //   }
+        this.data.push(res)
 
-       
 
       })
 
