@@ -37,3 +37,6 @@ unSubscribe !: Subscription
     this.unSubscribe.unsubscribe()
   }
 }
+
+
+let a = [1,2]

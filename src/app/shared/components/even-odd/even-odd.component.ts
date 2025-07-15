@@ -18,7 +18,7 @@ unSubscribe !: Subscription
    
     this.unSubscribe = this.f.getNum().subscribe(res => {
   if (res % 2 === 0) {
-    console.log('Even number received:', res);
+    // console.log('Even number received:', res);
     this.data.push(res);
   }
 });
@@ -28,7 +28,7 @@ unSubscribe !: Subscription
 
       
 
-       console.log(this.data)
+      //  console.log(this.data)
        
   }
   
