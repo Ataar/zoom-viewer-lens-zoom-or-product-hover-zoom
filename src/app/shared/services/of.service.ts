@@ -8,7 +8,9 @@ import { interval, Observable } from 'rxjs';
 export class OfService {
 
   // ✅ Best practice: Observable property ke naam ke end me $ lagate hain, jo indicate karta hai ki ye ek Observable hai
-  onSubscribe$: Observable<number> = interval(10);  // interval(10) ek infinite observable emit karta hai har 10ms me
+  // interval(10) ek infinite observable emit karta hai har 10ms me
+  // means It emits a number every 10 seconds.
+onSubscribe$: Observable<number> = interval(10);
 
   constructor() { }
 

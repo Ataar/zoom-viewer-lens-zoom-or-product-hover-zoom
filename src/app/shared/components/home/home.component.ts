@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   // ✅ Subscription type variable for managing and cleaning the subscription
   private unSubscribe!: Subscription;
 
-  // ✅ Injecting service using Dependency Injection
+  // ✅ Injecting service using Dependency Injection matlab
+  // Aapke component ko agar kisi service (OfService) ki zarurat hai, to Angular khud usko "provide" kar deta hai.
   constructor(private _of: OfService) {}
 
   // ✅ Lifecycle hook - runs after component initializes
