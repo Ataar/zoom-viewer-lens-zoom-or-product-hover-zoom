@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
 import { PostsComponent } from './shared/components/posts/posts.component';
 import { TodosComponent } from './shared/components/todos/todos.component';
+import { PostComponent } from './shared/components/post/post.component';
+import { PostFormComponent } from './shared/components/post-form/post-form.component';
 
 const routes: Routes = [ 
 
@@ -20,6 +22,21 @@ const routes: Routes = [
 {
   path:'posts',
   component:PostsComponent
+},
+
+{
+  path:'posts/addPost',
+  component:PostFormComponent
+},
+
+{
+   path:'posts/:userId',
+   component:PostComponent
+},
+
+{
+   path:'posts/:userId/edit',
+   component:PostFormComponent
 },
 {
   path:'todos',

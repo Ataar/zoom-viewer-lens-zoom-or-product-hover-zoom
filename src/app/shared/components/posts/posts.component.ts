@@ -1,7 +1,8 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
-import { PostsService } from "../../services/posts.service";
 import { Subscription } from "rxjs";
 import { Post } from "../../module/posts";
+import { PostsService } from "../../services/posts.service";
+import { UuidService } from "../../services/uuid.service";
 
 @Component({
   selector: 'app-posts',
@@ -11,29 +12,52 @@ import { Post } from "../../module/posts";
 
  
 export class PostsComponent implements OnInit , OnDestroy {
- data: Post[] = []
-unSubscribe!:Subscription
 
-  constructor(private _posts : PostsService) { }
+ data:Array<Post>= []
+unSubscribe!:Subscription
+  postsService: any;
+
+
+  constructor(
+     private posts : PostsService,
+    private uuid :UuidService) { }
  
-  ngOnInit(): void {
-    this.unSubscribe = this._posts.getAllObj().subscribe(res=>{
-      // console.log(res);
-      this.data = res
-      console.log(this.data);
+    
+//   ngOnInit(): void {
+//   this.unSubscribe = this.posts.getAllObj().subscribe(res => {
+//     this.data = res.map(post => ({
+//       ...post,
+//       data: this.uuid.uuid() // ✅ Add custom uuid to each post
+//     }));
+
+//     // console.log(this.data);
 
       
-    })
-  }
-    
-       
+//   });
   
-     ngOnDestroy(): void {
-      if(this.data)
-      {
-        this.unSubscribe.unsubscribe()
-      }
+// }
+  
+ngOnInit(): void {
+  if (this.posts.postsArray.length) {
+    this.data = this.posts.postsArray; // ✅ Use cached data
+  } else {
+    this.unSubscribe = this.posts.getAllObj().subscribe(res => {
+      this.data = res.map(post => ({
+        ...post,
+        id: this.uuid.uuid()  // ✅ Overwrite API id with custom UUID
+      }));
+
+      this.posts.postsArray = this.data; // ✅ Cache updated result
+    });
   }
+}
+  
+    ngOnDestroy(): void {
+  if (this.unSubscribe) {
+    this.unSubscribe.unsubscribe();
+  }
+}
+
 }
 
 
