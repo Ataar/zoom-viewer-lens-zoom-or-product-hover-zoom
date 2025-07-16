@@ -26,3 +26,20 @@ export class Of2Service {
     )
    }
 }
+
+
+
+
+
+
+// import { of } from 'rxjs';
+// import { filter, map } from 'rxjs/operators';
+
+// // Step 1: Create the observable
+// const evenOdd$ = of(10, 15, 20, 25, 30, 35, 40, 45, 50).pipe(
+//   filter(num => num % 2 === 0),      // ✅ Keep only even numbers
+//   map(num => num * 10)               // ✅ Multiply each by 10
+// );
+
+// // Step 2: Subscribe to get the result
+// evenOdd$.subscribe(result => console.log(result));
