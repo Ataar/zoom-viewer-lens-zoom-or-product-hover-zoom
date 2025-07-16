@@ -1,6 +1,7 @@
 import { Component, OnDestroy, OnInit } from "@angular/core";
+import { PostsService } from "../../services/posts.service";
 import { Subscription } from "rxjs";
-import { Of2Service } from "../../services/of2.service";
+import { Post } from "../../module/posts";
 
 @Component({
   selector: 'app-posts',
@@ -9,34 +10,30 @@ import { Of2Service } from "../../services/of2.service";
 })
 
  
-export class PostsComponent implements OnInit, OnDestroy {
-  
-  data : number[]=[];
+export class PostsComponent implements OnInit , OnDestroy {
+ data: Post[] = []
+unSubscribe!:Subscription
 
-unSubscribe !: Subscription
-  constructor(
-   private f : Of2Service) { }
+  constructor(private _posts : PostsService) { }
+ 
   ngOnInit(): void {
-   
-      this.unSubscribe =  this.f.getNum01().subscribe(res=>{
-        // if(res % 2===0)
-        // {
-        //   // console.log(res);
-        //     this.data.push(res)
-        //   }
-        this.data.push(res)
+    this.unSubscribe = this._posts.getAllObj().subscribe(res=>{
+      // console.log(res);
+      this.data = res
+      console.log(this.data);
 
-
-      })
-
-      //  console.log(this.data)
-       
+      
+    })
   }
+    
+       
   
-  ngOnDestroy(): void {
-    this.unSubscribe.unsubscribe()
+     ngOnDestroy(): void {
+      if(this.data)
+      {
+        this.unSubscribe.unsubscribe()
+      }
   }
 }
 
 
-let a = [1,2]

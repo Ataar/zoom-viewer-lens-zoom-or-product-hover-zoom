@@ -1,40 +1,22 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
-import { Of2Service } from '../../services/of2.service';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-todos',
   templateUrl: './todos.component.html',
   styleUrls: ['./todos.component.scss']
 })
-export class TodosComponent implements OnInit ,OnDestroy {
+export class TodosComponent implements OnInit  {
   
  
 
- data : number[]=[];
 
-unSubscribe !: Subscription
-  constructor(
-   private f : Of2Service) { }
+
+
+  constructor() { }
   ngOnInit(): void {
-   
-      this.unSubscribe =  this.f.getNum02().subscribe(res=>{
-        // if(res%2===1)
-        // {
-        //   // console.log(res);
-        //     this.data.push(res)
-        //   }
-        this.data.push(res)
-
-
-      })
-
-       console.log(this.data)
-       
+          
   }
   
-  ngOnDestroy(): void {
-    this.unSubscribe.unsubscribe()
-  }
+ 
 }
 

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Of2Service } from './of2.service';
+import { PostsService } from './posts.service';
 
-describe('Of2Service', () => {
-  let service: Of2Service;
+describe('PostsService', () => {
+  let service: PostsService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(Of2Service);
+    service = TestBed.inject(PostsService);
   });
 
   it('should be created', () => {

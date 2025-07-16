@@ -8,6 +8,8 @@ import { PostsComponent } from './shared/components/posts/posts.component';
 import { TodosComponent } from './shared/components/todos/todos.component';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
+import { HttpClientModule } from '@angular/common/http';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,8 +21,8 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule
-   
+    SharedModule,
+   HttpClientModule
     
   ],
   providers: [],

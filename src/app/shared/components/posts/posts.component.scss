@@ -1,21 +1,33 @@
-.p-2
-
+.col-md-4
 {
-    border:2px solid rgb(214, 235, 139);
-    color: white;
-    
+    margin-bottom: 30px;
 }
 
-.p-2 span
+.card
 {
-    font-family: georgia;
-    
-}
-
-.text
-{
+    height: 100%;
+    width: 100%;
     text-align: center;
-    color: white;
+    
+}
+
+.card-header
+{
+    background-color: rgb(235, 131, 148);
+    color: rgb(208, 241, 206);
+    text-transform: capitalize;
+}
+
+.card-body
+{
     font-family: georgia;
-    font-style: italic;
+    font-size: 18px;
+    word-spacing: 2px;
+    letter-spacing: 1px;
+    
+}
+
+.card-footer
+{
+    background-color: gray;
 }
