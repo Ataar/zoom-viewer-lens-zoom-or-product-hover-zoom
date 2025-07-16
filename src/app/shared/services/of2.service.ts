@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { filter, Observable, of } from 'rxjs';
+import { filter, map, Observable, of, tap } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,9 +13,16 @@ export class Of2Service {
    getNum01():Observable<number>
    {
     
-    return this.evenOdd$.pipe(
-      filter(num=>num % 2===0)
-    )
+      return this.evenOdd$.pipe(
+      filter(num => num % 2 === 0),
+
+      // tap operator ka istemal karke console par message print karega
+      // Yeh stream ke data (number) ko badlega nahi
+      // Kyunki `tap` ne data ke type ko `number` se `string` mein nahi badla,
+      //  isliye `getNum01` function se return hone wala Observable abhi bhi `Observable<number>` hi hai.
+      
+      tap(num => console.log(`the value is: ${num}`))
+    );
    }
    
    getNum02():Observable<number>
@@ -25,6 +32,7 @@ export class Of2Service {
       filter(num=>num % 2===1)
     )
    }
+   
 }
 
 
