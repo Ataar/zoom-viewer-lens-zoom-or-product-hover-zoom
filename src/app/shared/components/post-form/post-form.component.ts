@@ -115,7 +115,7 @@ export class PostFormComponent implements OnInit {
         this.postService.createPost(newPost).subscribe(() => {
 
           // Local array me naye post ko add karo (start me)
-          this.postService.postsArray.push(newPost);
+          this.postService.postsArray.unshift(newPost);
 
           // Form reset karo
           this.postForm.reset();

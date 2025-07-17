@@ -7,11 +7,13 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { PostFormComponent } from './components/post-form/post-form.component';
+import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     PostFormComponent,
+    ConfirmDialogComponent,
       // ✅ Declare here
   ],
   imports: [

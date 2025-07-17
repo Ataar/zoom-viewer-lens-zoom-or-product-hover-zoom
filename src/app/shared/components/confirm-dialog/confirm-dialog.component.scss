@@ -1,0 +1,28 @@
+
+::ng-deep .mat-dialog-container {
+  background: rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+}
+
+
+h2
+{
+   padding:20px;
+   color: white;
+   font-family: georgia;
+   font-style: italic;
+}
+
+.box
+{
+    text-align: center;
+    padding: 10px;
+    width: 300px;
+}
+   
