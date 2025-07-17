@@ -1,5 +1,5 @@
-<div class="row">
-  <div class="col-md-6 offset-md-3">
+<div class="row full-height-center">
+  <div class="col-md-6">
     <form #postForm="ngForm" (ngSubmit)="onSubmit()" class="text-white">
       <div class="form-group mb-3">
         <label for="title" class="form-label">Title</label>
@@ -14,7 +14,7 @@
       </div>
 
       <div class="form-group mb-3">
-        <label for="body" class="form-label">Body</label>
+        <label for="body" class="form-label">Content</label>
         <textarea
           id="body"
           name="body"
@@ -25,16 +25,14 @@
         ></textarea>
       </div>
 
-    <button
-  type="submit"
-  class="btn"
-  [ngClass]="isEditMode ? 'btn-success' : 'btn-primary'"
-  [disabled]="postForm.invalid"
->
-  {{ isEditMode ? 'Update Post' : 'Add Post' }}
-</button>
-
-
+      <button
+        type="submit"
+        class="btn"
+        [ngClass]="isEditMode ? 'btn-success' : 'btn-primary'"
+        [disabled]="postForm.invalid"
+      >
+        {{ isEditMode ? 'Update Post' : 'Add Post' }}
+      </button>
     </form>
   </div>
 </div>
