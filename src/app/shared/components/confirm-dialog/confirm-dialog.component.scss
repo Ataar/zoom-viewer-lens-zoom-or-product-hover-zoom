@@ -1,7 +1,12 @@
+::ng-deep .cdk-overlay-backdrop {
+  background-color: rgba(0, 0, 0, 0.3) !important;  /* dimmed background */
+  backdrop-filter: blur(15px);                       /* ✨ blur effect */
+  -webkit-backdrop-filter: blur(6px);               /* Safari support */
+}
 
 ::ng-deep .mat-dialog-container {
   background: rgba(255, 255, 255, 0.1) !important;
-  backdrop-filter: blur(12px);
+  backdrop-filter: blur(5px);
   -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.2);
   color: white;
@@ -26,3 +31,5 @@ h2
     width: 300px;
 }
    
+
+
