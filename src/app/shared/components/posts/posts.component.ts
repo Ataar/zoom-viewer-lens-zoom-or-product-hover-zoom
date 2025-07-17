@@ -1,63 +1,73 @@
+// ✅ Required imports for component logic
 import { Component, OnDestroy, OnInit } from "@angular/core";
 import { Subscription } from "rxjs";
-import { Post } from "../../module/posts";
-import { PostsService } from "../../services/posts.service";
-import { UuidService } from "../../services/uuid.service";
-
+import { Post } from "../../module/posts";              // Post model
+import { PostsService } from "../../services/posts.service"; // Service for data fetching
+import { UuidService } from "../../services/uuid.service";   // Service for UUID generation
+import { Router } from "@angular/router";
 @Component({
-  selector: 'app-posts',
-  templateUrl: './posts.component.html',
-  styleUrls: ['./posts.component.scss']
+  selector: 'app-posts',                        // HTML selector for this component
+  templateUrl: './posts.component.html',        // HTML file
+  styleUrls: ['./posts.component.scss']         // CSS file
 })
+export class PostsComponent implements OnInit, OnDestroy {
 
- 
-export class PostsComponent implements OnInit , OnDestroy {
+  // ✅ Posts data ko is array me store karenge
+  data: Array<Post> = [];
 
- data:Array<Post>= []
-unSubscribe!:Subscription
-  postsService: any;
+  // ✅ Agar koi post edit karna ho to usko temporarily yahan store karenge
+  currentEditPost!: Post;
 
+  // ✅ API subscription ko track karne ke liye
+  unSubscribe!: Subscription;
 
+  // ✅ Constructor me services inject ki ja rahi hain
   constructor(
-     private posts : PostsService,
-    private uuid :UuidService) { }
- 
+    private posts: PostsService,     // Posts service
+    private uuid: UuidService,   // UUID service
+    private router:Router ,      
+  ) {}
+
+  // ✅ Component initialize hote hi data fetch karna
+  ngOnInit(): void {
+
+    // ✅ Agar postsArray me pehle se data hai (cached), to usi ko use karo
+    if (this.posts.postsArray.length) {
+      this.data = this.posts.postsArray;
+    } 
+
     
-//   ngOnInit(): void {
-//   this.unSubscribe = this.posts.getAllObj().subscribe(res => {
-//     this.data = res.map(post => ({
-//       ...post,
-//       data: this.uuid.uuid() // ✅ Add custom uuid to each post
-//     }));
+    // ✅ Agar cached data nahi hai to API se data fetch karo
+    else {
+      this.unSubscribe = this.posts.getAllObj().subscribe(res => {
+        // ✅ Har post ke sath ek custom UUID add karo (original ID overwrite karke)
+        this.data = res.map(post => ({
+          ...post,
+          id: this.uuid.uuid()
+        }));
 
-//     // console.log(this.data);
-
-      
-//   });
-  
-// }
-  
-ngOnInit(): void {
-  if (this.posts.postsArray.length) {
-    this.data = this.posts.postsArray; // ✅ Use cached data
-  } else {
-    this.unSubscribe = this.posts.getAllObj().subscribe(res => {
-      this.data = res.map(post => ({
-        ...post,
-        id: this.uuid.uuid()  // ✅ Overwrite API id with custom UUID
-      }));
-
-      this.posts.postsArray = this.data; // ✅ Cache updated result
-    });
+        // ✅ Fetched data ko service ke array me store karo (for caching)
+        this.posts.postsArray = this.data;
+      });
+    }
   }
-}
   
-    ngOnDestroy(): void {
-  if (this.unSubscribe) {
-    this.unSubscribe.unsubscribe();
+      onDelet(id:string)
+  
+      {
+           this.posts.ondelet(id).subscribe(res=>{
+            console.log(res);
+            
+           })
+      }
+  
+  // ✅ Jab component destroy ho (page leave kare), to subscription close karo
+  ngOnDestroy(): void {
+    if (this.unSubscribe) {
+      this.unSubscribe.unsubscribe();
+    }
   }
 }
 
-}
-
+  
 

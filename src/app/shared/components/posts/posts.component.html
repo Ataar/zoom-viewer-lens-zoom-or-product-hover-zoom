@@ -19,7 +19,7 @@
          <div class="card-footer d-flex justify-content-between">
         <button [routerLink]="[posts.id, 'edit']" mat-raised-button color="primary">Edit</button>
 
-          <button mat-raised-button color= "warn">Delete</button>
+          <button (click)="onDelet(posts.id)" mat-raised-button color= "warn">Delete</button>
          </div>
       </div>
     </div>
