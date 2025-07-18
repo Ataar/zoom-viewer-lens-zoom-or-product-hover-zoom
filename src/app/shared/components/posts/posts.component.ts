@@ -89,8 +89,22 @@ export class PostsComponent implements OnInit, OnDestroy {
           this.posts.postsArray = this.data;
         });
       }
+      else {
+      // ✅ Show cancel message here
+      this.snackbar.showCancel('Action is Cancelled');
+    }
+
+
+        
+        
+
+      
     });
+
+    
   }
+
+
 
   // ✅ Lifecycle method: Component destroy hone pe subscription clean up
   ngOnDestroy(): void {

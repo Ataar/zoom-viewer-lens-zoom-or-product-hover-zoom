@@ -40,3 +40,10 @@ position: absolute; top: 38px; right: 12px; pointer-events: none;
     font-size: 16px;
     letter-spacing: 1px;
 }
+
+::ng-deep .snackbar-info {
+  background-color: #1976d2; /* Blue */
+  color: #fff;
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}

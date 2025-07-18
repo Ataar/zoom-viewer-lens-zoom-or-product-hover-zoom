@@ -5,6 +5,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   providedIn: 'root'
 })
 export class CustomSnackbarService {
+ 
+  
 
   constructor(private snackBar: MatSnackBar) {}
 
@@ -33,7 +35,30 @@ export class CustomSnackbarService {
       horizontalPosition:'center',
       panelClass: ['snackbar-info']
     });
+    
   }
+  
+  showCancel(message:string)
+  {
+    this.snackBar.open(message, '',{
+       duration: 1500,
+   verticalPosition: 'top',
+   horizontalPosition: 'center',
+   panelClass: ['snackbar-Cancel']
+     }
+    )}
+
+//   showCancel(message: string) {
+//     this.snackBar.open(message, 'Close', {
+//       duration: 1500,
+//       verticalPosition:'top',
+//       horizontalPosition:'center',
+//       panelClass: ['snackbar-info']
+//     });
+ 
+
+
+
+// }
+
 }
-
-
