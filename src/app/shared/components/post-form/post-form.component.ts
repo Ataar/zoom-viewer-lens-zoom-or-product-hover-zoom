@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Post } from '../../module/posts'; // Post model import
 import { PostsService } from '../../services/posts.service'; // Service for API/local data handling
 import { UuidService } from '../../services/uuid.service'; // Service to generate UUIDs
+import { CustomSnackbarService } from '../../services/custom-snackbar.service';
 
 @Component({
   selector: 'app-post-form', // Is component ka HTML selector
@@ -30,7 +31,8 @@ export class PostFormComponent implements OnInit {
     private postService: PostsService,      // Service for post operations
     private route: ActivatedRoute,          // Current route se ID fetch karne ke liye
     private router: Router,                 // Navigate karne ke liye
-    private uuid: UuidService               // UUID generate karne ke liye
+    private uuid: UuidService,              // UUID generate karne ke liye
+    private snackbar: CustomSnackbarService
   ) {}
 
   // ✅ Component initialization lifecycle hook
@@ -65,7 +67,6 @@ export class PostFormComponent implements OnInit {
   onSubmit(): void {
     if (this.postForm.valid) {
       const formValue = this.postForm.value; // Form ki current values nikal lo
-
       // ------------------------ Edit Mode ------------------------
       if (this.isEditMode) {
 
@@ -95,6 +96,7 @@ export class PostFormComponent implements OnInit {
           const index = this.postService.postsArray.findIndex(p => p.id === this.postId);
           if (index !== -1) {
             this.postService.postsArray[index] = updatedPost;
+             this.snackbar.showInfo('Post Updated successfully!');
           }
 
           this.router.navigate(['/posts']);
@@ -113,10 +115,10 @@ export class PostFormComponent implements OnInit {
 
         // API call karke post create karo
         this.postService.createPost(newPost).subscribe(() => {
-
+        
           // Local array me naye post ko add karo (start me)
           this.postService.postsArray.unshift(newPost);
-
+          this.snackbar.showSuccess('Post submitted successfully!');
           // Form reset karo
           this.postForm.reset();
 

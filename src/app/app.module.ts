@@ -18,7 +18,8 @@ import { TodosComponent } from './shared/components/todos/todos.component';
     HomeComponent,
     PostsComponent,
     PostComponent,
-    TodosComponent
+    TodosComponent,
+  
     
     
     // ❌ Remove PostFormComponent here — declared in SharedModule
