@@ -1,7 +1,35 @@
 
-<!-- <div class="col-md-10 offset-md-2 text-right" >
-<button routerLink="/posts/addPost"
- mat-raised-button color="primary">
- Add Student  
-</button>
+<!-- <div class="row">
+
+    <div *ngFor="let post of data01" class="mb-4 col-md-6">
+        <div class="card h-100" >
+            <img   [src]="post.image" alt="Post Image" class="card-img-top" />
+            <div class="card-body">
+              <h5 class="card-title font-weight-bold">{{ post.title }}</h5>
+              <p class="card-text">{{ post.body }}</p>
+            </div>
+          </div>
+        </div>
+
 </div> -->
+<!-- src/app/home/home.component.html -->
+<div class="container mt-5">
+  <div class="row">
+    <div *ngFor="let post of allPosts" class="col-md-4 mb-5">
+      <div class="card">
+        <img [src]="post.image" class="card-img-top" alt="Image" />
+        <div class="card-body">
+          <h5 class="card-title">{{ post.title }}</h5>
+          <p>{{ post.body}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading indicator -->
+  <div *ngIf="loading" class="text-center my-4">
+    <div class="spinner-border text-primary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>

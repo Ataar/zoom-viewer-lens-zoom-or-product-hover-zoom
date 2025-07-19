@@ -6,14 +6,18 @@ import { RouterModule } from '@angular/router';
 
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
-import { PostFormComponent } from './components/post-form/post-form.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
+import { HomeComponent } from './components/home/home.component';
+import { ServicesComponent } from './components/services/services.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
-    PostFormComponent,
     ConfirmDialogComponent,
+    HomeComponent,
+    ServicesComponent,
+    ContactComponent,
       // ✅ Declare here
   ],
   imports: [
@@ -30,7 +34,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
     RouterModule,
     MaterialModule,
     NavbarComponent,
-    PostFormComponent  // ✅ Export for use in AppModule
+    HomeComponent,
+    ServicesComponent
   ]
 })
 export class SharedModule {}

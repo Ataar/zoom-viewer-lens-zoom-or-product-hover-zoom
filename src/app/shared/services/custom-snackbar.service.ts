@@ -48,17 +48,4 @@ export class CustomSnackbarService {
      }
     )}
 
-//   showCancel(message: string) {
-//     this.snackBar.open(message, 'Close', {
-//       duration: 1500,
-//       verticalPosition:'top',
-//       horizontalPosition:'center',
-//       panelClass: ['snackbar-info']
-//     });
- 
-
-
-
-// }
-
 }

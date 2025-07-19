@@ -7,18 +7,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { SharedModule } from './shared/shared.module';
 import { HttpClientModule } from '@angular/common/http';
-import { HomeComponent } from './shared/components/home/home.component';
-import { PostsComponent } from './shared/components/posts/posts.component';
-import { PostComponent } from './shared/components/post/post.component';
-import { TodosComponent } from './shared/components/todos/todos.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    PostsComponent,
-    PostComponent,
-    TodosComponent,
+    
   
     
     
@@ -28,7 +21,7 @@ import { TodosComponent } from './shared/components/todos/todos.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    SharedModule,        // ✅ PostFormComponent comes from here
+    SharedModule,        
     HttpClientModule,
   ],
   providers: [],
