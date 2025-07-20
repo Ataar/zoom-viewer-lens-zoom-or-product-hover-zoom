@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { HomeComponent } from './components/home/home.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { PostFormComponent } from './components/post-form/post-form.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { ContactComponent } from './components/contact/contact.component';
     HomeComponent,
     ServicesComponent,
     ContactComponent,
+    PostFormComponent,
       // ✅ Declare here
   ],
   imports: [
@@ -35,7 +37,8 @@ import { ContactComponent } from './components/contact/contact.component';
     MaterialModule,
     NavbarComponent,
     HomeComponent,
-    ServicesComponent
+    ServicesComponent,
+    PostFormComponent
   ]
 })
 export class SharedModule {}
