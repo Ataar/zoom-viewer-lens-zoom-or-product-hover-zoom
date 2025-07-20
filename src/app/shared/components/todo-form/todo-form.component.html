@@ -1,0 +1,62 @@
+
+<div class="row">
+  <div class="col-md-4 mt-3">
+    <form #todoForm="ngForm" (ngSubmit)="addTodo()">
+      
+      <label for="title">Todo Title</label>
+     <input
+  name="title"
+  [(ngModel)]="title"
+  class="form-control"
+  required
+  placeholder="Enter title"
+/>
+
+
+        <button class="mt-3"
+      [disabled]="todoForm.invalid"
+     type="submit" mat-raised-button [color]="isEditMode ? 'accent' : 'primary'">
+     {{ isEditMode ?  'Update User' : 'Add User' }}
+   </button>
+    </form>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+<!-- 
+<div class="row">
+  <div class="col-md-4 mt-3">
+    <form #todoForm="ngForm" (ngSubmit)="addTodo()">
+      
+      <label for="title">Todo Title</label>
+      <input
+        name="title"
+        ngModel
+        type="text"
+        class="form-control"
+        required
+        placeholder="Enter title"
+      />
+
+      <label for="createdAt" class="mt-3">Select Date</label>
+      <input
+        name="createdAt"
+        ngModel
+        type="date"
+        class="form-control"
+        required
+      />
+
+      <button mat-raised-button color="primary" class="mt-3" [disabled]="!todoForm.valid">
+        Add Item
+      </button>
+    </form>
+  </div>
+</div> -->

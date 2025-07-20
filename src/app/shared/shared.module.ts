@@ -1,4 +1,4 @@
-// shared.module.ts
+// src/app/shared/shared.module.ts
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -10,7 +10,8 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { HomeComponent } from './components/home/home.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
-import { PostFormComponent } from './components/post-form/post-form.component';
+import { TodoComponent } from './components/todo-form/todo-form.component';
+import { TodoItemsComponent } from './components/todo-items/todo-items.component';
 
 @NgModule({
   declarations: [
@@ -19,8 +20,8 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     HomeComponent,
     ServicesComponent,
     ContactComponent,
-    PostFormComponent,
-      // ✅ Declare here
+    TodoComponent,
+    TodoItemsComponent
   ],
   imports: [
     CommonModule,
@@ -38,7 +39,9 @@ import { PostFormComponent } from './components/post-form/post-form.component';
     NavbarComponent,
     HomeComponent,
     ServicesComponent,
-    PostFormComponent
+    ContactComponent,
+    TodoComponent,
+    TodoItemsComponent
   ]
 })
 export class SharedModule {}

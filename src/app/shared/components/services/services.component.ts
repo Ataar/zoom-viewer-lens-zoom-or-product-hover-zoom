@@ -1,14 +1,5 @@
 
-
-
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
-import { dataObjects } from '../../module/data';
-import { DataService } from '../../services/data.service';
 
 @Component({
   selector: 'app-services',
@@ -17,13 +8,12 @@ import { DataService } from '../../services/data.service';
 })
 export class ServicesComponent implements OnInit {
 
- data02 :dataObjects[] = []
+
   constructor(
-    private data : DataService
+    
   ) { }
 
   ngOnInit(): void {
-   this.data02 = this.data.fetchData()
   }
 
 

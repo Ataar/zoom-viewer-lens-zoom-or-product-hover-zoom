@@ -1,8 +1,8 @@
-// src/app/module/data.ts
-export interface dataObjects {
-  userId: number;
+export interface TodoItem {
   id: number;
   title: string;
-  body: string;
-  image: string;
+  description: string;
+  imageUrl: string;
+  completed: boolean;
+  createdAt: Date;
 }
