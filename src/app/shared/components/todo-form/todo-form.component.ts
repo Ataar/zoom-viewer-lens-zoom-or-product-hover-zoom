@@ -1,9 +1,8 @@
-
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TodoService } from '../../services/data.service';
 import { NgForm } from '@angular/forms';
+import { DataService } from '../../services/data.service';
 import { UuidService } from '../../services/uuid.service';
-import { TodoItem } from '../../module/data';
+import { user } from '../../module/data';
 
 @Component({
   selector: 'app-todo',
@@ -11,58 +10,45 @@ import { TodoItem } from '../../module/data';
   styleUrls: ['./todo-form.component.scss']
 })
 export class TodoComponent implements OnInit {
-  title:string ='';
-  isEditMode : boolean = false
-selectedId: number | null = null;
-   @ViewChild('todoForm') todoForm!: NgForm
 
-  constructor(private data : TodoService,
-     private _UUi: UuidService    
+  @ViewChild('todoForm') todoForm!: NgForm;
+  todo: string = '';
+  isEditMode = false;
+  editingId: string | null = null;
+
+  constructor(
+    private todoData: DataService,
+    private uuid: UuidService
   ) {}
 
   ngOnInit(): void {
-    this.data.selectedTodo$.subscribe(todo => {
-      console.log('Updating ID:', this.selectedId); // ✅ Ye sahi ID print kare
-
-     this.data.selectedTodo$.subscribe(todo => {
-  if (todo) {
-    this.title = todo.title;        // ✅ ye form ke input me show karega
-    this.selectedId = todo.id;
-    this.isEditMode = true;
+    // ✅ Subscribe to selected user from service
+    this.todoData.selectedUser$.subscribe((user: user | null) => {
+      if (user) {
+        this.todo = user.name;
+        this.editingId = user.id;
+        this.isEditMode = true;
+      }
+    });
   }
-    
-    }
-    )}
-  )}
-
 
   addTodo() {
-  if (this.todoForm.valid) {
-    if (this.isEditMode && this.selectedId !== null) {
-  this.data.updateItem(this.selectedId, {
-    title: this.title
-  });
-}
- else {
-      const newTodo: TodoItem = {
-        id: +this._UUi.uuid(),
-        title: this.title,
-        description: '',
-        imageUrl: '',
-        completed: false,
-        createdAt: new Date
+    if (this.todoForm.valid) {
+      const userObj: user = {
+        name: this.todo,
+        id: this.isEditMode ? this.editingId! : this.uuid.UID()
       };
-      this.data.createItem(newTodo);
-    }
 
-    // reset
-    this.todoForm.resetForm();
-    this.title = '';
-    this.selectedId = null;
-    this.isEditMode = false;
+      if (this.isEditMode) {
+        this.todoData.updateObj(userObj); // ✅ Update existing item
+      } else {
+        this.todoData.createObj(userObj); // ✅ Create new item
+      }
+
+      this.todoForm.resetForm(); // ✅ Reset form
+      this.todo = '';
+      this.isEditMode = false;
+      this.editingId = null;
+    }
   }
 }
-
-}
-
-

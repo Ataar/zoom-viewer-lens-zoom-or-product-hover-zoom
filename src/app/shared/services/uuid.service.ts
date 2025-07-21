@@ -4,10 +4,13 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class UuidService {
+  generate(): string {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
 
-  uuid() {
+  UID() {
     // Generate a random 32-character hexadecimal string
     return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
       const r = Math.random() * 16 | 0;

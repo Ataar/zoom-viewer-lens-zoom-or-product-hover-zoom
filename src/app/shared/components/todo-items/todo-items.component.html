@@ -1,23 +1,25 @@
 
 
- <div class="row">
-    <div class="col-md-6 offset-md-6">
-           <div *ngFor="let todo of todoItems">
-      <div class="card h-100 mb-5">
-        <div class="card-body">
-            <h5 class="card-title">{{ todo.title }}</h5>
-            <div class="text">
-          <button (click)="edit(todo.id)"  mat-raised-button color="primary">Edit</button>
-          <button (click)="removeItem(todo.id)" mat-raised-button color="warn">Delete</button>
-            </div>
-        </div>
-      </div>
-    </div>
-    </div>
- </div>
 
 
 
+    <div class="card mt-4" *ngFor="let user of userData">
+      <div class="card-body d-flex justify-content-between align-items-center">
+        {{ user.name }}
+        <div class="btn-group" role="group">
+<!-- With text and icon -->
+<button (click)="edit(user.id)" mat-icon-button color="primary" aria-label="Edit" class="icon-button-slim">
+  <mat-icon class="icon-circle">edit</mat-icon>
+</button>
+
+<button (click)="onDelete(user.id)" mat-icon-button color="warn" aria-label="Delete" class="icon-button-slim">
+  <mat-icon class="icon-circle">delete</mat-icon>
+</button>
+
+  
+</div>
+</div>
+</div>
 
 
 

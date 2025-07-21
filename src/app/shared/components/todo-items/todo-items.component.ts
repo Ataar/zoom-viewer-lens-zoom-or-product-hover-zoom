@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { TodoItem } from '../../module/data';
-import { TodoService } from '../../services/data.service';
+import { DataService } from '../../services/data.service';
+import { user } from '../../module/data';
 
 @Component({
   selector: 'app-todo-items',
@@ -8,29 +8,35 @@ import { TodoService } from '../../services/data.service';
   styleUrls: ['./todo-items.component.scss']
 })
 export class TodoItemsComponent implements OnInit {
-  todoItems:Array<TodoItem> = [];
-   title!:string
-  constructor(private todoService: TodoService) { }
+ 
+  userData :Array<user> = []
+  constructor(
+    private data : DataService,
+   
+  ) { }
 
   ngOnInit(): void {
 
-     this.todoItems = this.todoService.getTodos();
-
+    this.userData  = this.data.getUsersData()
   }
 
- // todo-items.component.ts
-edit(id: number) {
-  const todo = this.todoService.todos.find(t => t.id === id);
-  if (todo) {
-    this.todoService.setSelectedTodo(todo); // ✅ this triggers the patch
+
+  edit(id:string)
+  {
+     const user = this.data.usersObjArr.find(add=>add.id===id)
+     console.log(user);
+     
+     if(user)
+     {
+      this.data.selectUser(user)
+     }
   }
-}
 
+  onDelete(id:string)
+  {
+    this.data.onRemmove(id)
+  }
 
-
-removeItem(id: number) {
-  this.todoService.removeItem(id); // ✅ ID pass karo
-}
 
 
 }
