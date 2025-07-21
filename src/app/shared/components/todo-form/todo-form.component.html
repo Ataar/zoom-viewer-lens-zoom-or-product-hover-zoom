@@ -1,19 +1,29 @@
-
-
 <form #todoForm="ngForm" (ngSubmit)="addTodo()">
-<label for="todo">Todo Name</label>
-<input type="text"
-[(ngModel)]="todo"
- id="todo"
- name="todo"
- class="form-control">
-<button
-  class="btn mt-3"
-  [ngClass]="isEditMode ? 'btn-success' : 'btn-primary'"
->
-  {{ isEditMode ? 'Update Todo' : 'Add Todo' }}
-</button>
+  <label for="todo">Todo Name</label>
+  
+  <input
+    type="text"
+    [(ngModel)]="todo"
+    id="todo"
+    name="todo"
+    class="form-control"
+    required
+    #todoInput="ngModel"
+    [ngClass]="{ 'is-invalid': todoInput.invalid && (todoInput.touched || todoForm.submitted) }"
+  />
 
+  <!-- ❗ Error Message -->
+  <div *ngIf="todoInput.invalid && (todoInput.touched || todoForm.submitted)" class="text-danger mt-1">
+    Todo is required.
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="!todoForm.valid"
+    class="btn mt-3"
+    [ngClass]="isEditMode ? 'btn-success' : 'btn-primary'"
+  >
+    {{ isEditMode ? 'Update Todo' : 'Add Todo' }}
+  </button>
 </form>
-
 
