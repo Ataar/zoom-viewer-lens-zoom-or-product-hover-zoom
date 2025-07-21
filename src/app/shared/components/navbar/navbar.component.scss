@@ -81,5 +81,12 @@
   transform: scaleX(1);
 }
 
+}
 
+.navbar-dark .navbar-nav .nav-item.active .nav-link {
+  color: #c2ff0a !important;
+  
+  // border-radius: 10px;
+  // background-color: #007bff !important;
+  // padding: 10px 30px;
 }

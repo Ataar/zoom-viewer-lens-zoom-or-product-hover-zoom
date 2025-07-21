@@ -1,21 +1,18 @@
 <form #todoForm="ngForm" (ngSubmit)="addTodo()">
   <label for="todo">Todo Name</label>
   
+ <div class="position-relative">
   <input
     type="text"
     [(ngModel)]="todo"
     id="todo"
     name="todo"
-    class="form-control"
     required
     #todoInput="ngModel"
+    class="form-control"
     [ngClass]="{ 'is-invalid': todoInput.invalid && (todoInput.touched || todoForm.submitted) }"
   />
-
-  <!-- ❗ Error Message -->
-  <div *ngIf="todoInput.invalid && (todoInput.touched || todoForm.submitted)" class="text-danger mt-1">
-    Todo is required.
-  </div>
+</div>
 
   <button
     type="submit"

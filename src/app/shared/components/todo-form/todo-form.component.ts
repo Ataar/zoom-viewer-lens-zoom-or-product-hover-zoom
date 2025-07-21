@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { DataService } from '../../services/data.service';
 import { UuidService } from '../../services/uuid.service';
 import { user } from '../../module/data';
+import { CustomSnackbarService } from '../../services/custom-snackbar.service';
 
 @Component({
   selector: 'app-todo',
@@ -18,7 +19,8 @@ export class TodoComponent implements OnInit {
 
   constructor(
     private todoData: DataService,
-    private uuid: UuidService
+    private uuid: UuidService,
+    private snackabar :CustomSnackbarService
   ) {}
 
   ngOnInit(): void {
@@ -43,6 +45,7 @@ export class TodoComponent implements OnInit {
         this.todoData.updateObj(userObj); // ✅ Update existing item
       } else {
         this.todoData.createObj(userObj); // ✅ Create new item
+        this.snackabar.showSuccess('Created Successfully')
       }
 
       this.todoForm.resetForm(); // ✅ Reset form

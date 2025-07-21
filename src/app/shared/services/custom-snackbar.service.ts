@@ -11,7 +11,7 @@ export class CustomSnackbarService {
   constructor(private snackBar: MatSnackBar) {}
 
   showSuccess(message: string) {
-    this.snackBar.open(message, 'Close', {
+    this.snackBar.open(message, '', {
       duration: 1500,
       verticalPosition:'top',
       horizontalPosition:'center',

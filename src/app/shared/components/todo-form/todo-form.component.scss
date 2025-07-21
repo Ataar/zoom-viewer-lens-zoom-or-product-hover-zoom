@@ -4,3 +4,29 @@ form label{
 
 }
 
+.position-relative {
+  position: relative;
+}
+
+.error-icon {
+  position: absolute;
+  right: 10px;
+  top: 8px;
+  color: red;
+  font-size: 18px;
+}
+
+::ng-deep span.mat-simple-snack-bar-content {
+  font-size: 16px;
+  text-align: center !important;
+  width: 100%; /* Ensures span takes full width */
+  display: block; /* Makes text-align work properly */
+}
+
+::ng-deep .snackbar-success {
+  background-color: rgb(119, 234, 115);
+  font-size: 25px !important;
+  color: white;
+  text-align: center !important;
+}
+
