@@ -14,7 +14,7 @@ export class TodoComponent implements OnInit {
 
   @ViewChild('todoForm') todoForm!: NgForm;
   todo: string = '';
-  isEditMode = false;
+  isEditMode:boolean = false;
   editingId: string | null = null;
 
   constructor(
@@ -29,11 +29,12 @@ export class TodoComponent implements OnInit {
       if (user) {
         this.todo = user.name;
         this.editingId = user.id;
-        this.isEditMode = true;
+        this.isEditMode = true
+      
       }
     });
   }
-
+  
   addTodo() {
     if (this.todoForm.valid) {
       const userObj: user = {
@@ -43,6 +44,7 @@ export class TodoComponent implements OnInit {
 
       if (this.isEditMode) {
         this.todoData.updateObj(userObj); // ✅ Update existing item
+         this.snackabar.showInfo('Updated Successfully')
       } else {
         this.todoData.createObj(userObj); // ✅ Create new item
         this.snackabar.showSuccess('Created Successfully')

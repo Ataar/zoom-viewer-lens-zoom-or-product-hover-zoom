@@ -23,7 +23,7 @@ form label{
   display: block; /* Makes text-align work properly */
 }
 
-::ng-deep .snackbar-success {
+::ng-deep .snackbar-success , ::ng-deep .snackbar-info {
   background-color: rgb(119, 234, 115);
   font-size: 25px !important;
   color: white;
