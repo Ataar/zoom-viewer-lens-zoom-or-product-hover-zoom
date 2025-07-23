@@ -99,3 +99,99 @@ export class DataService {
 }
 
 
+// __________________________________________________________________________________________________
+
+
+
+
+// // ✅ Angular ka Injectable decorator, jo is class ko service banata hai
+// import { Injectable } from '@angular/core';
+
+// // ✅ User model (interface) jisme name aur id hota hai
+// import { user } from '../module/data';
+
+// // ✅ RxJS ka BehaviorSubject: state ko reactive tareeke se manage karta hai
+// import { BehaviorSubject } from 'rxjs';
+
+// // ✅ Ye service global level par available rahegi ('root' injector me)
+// @Injectable({
+//   providedIn: 'root'
+// })
+// export class DataService {
+
+//   // ✅ Sabhi users ka data is array me store hota hai
+//   usersObjArr: Array<user> = [];
+
+//   // ✅ BehaviorSubject: selected user (edit ke liye) ko manage karta hai
+//   private selectedUserSubject = new BehaviorSubject<user | null>(null);
+
+//   // ✅ Observable banaya hai jo components me subscribe kiya ja sakta hai
+//   selectedUser$ = this.selectedUserSubject.asObservable();
+
+//   // ✅ Constructor: Jab service load hoti hai tab ye chalega
+//   constructor() {
+//     // ✅ Local storage se data uthaya (agar pehle se kuch saved ho)
+//     const data = localStorage.getItem('todoArr');
+
+//     // ✅ Agar data mila to parse karo, nahi mila to default values do
+//     this.usersObjArr = data ? JSON.parse(data) : [
+//       { name: 'Rahul', id: '1' },
+//       { name: 'Priya', id: '2' },
+//       { name: 'Aman', id: '3' }
+//     ];
+
+//     // ✅ Agar localStorage me kuch bhi nahi tha to default values ko wahan save karo
+//     if (!data) {
+//       localStorage.setItem('todoArr', JSON.stringify(this.usersObjArr));
+//     }
+//   }
+
+//   // ✅ Ye method usersObjArr return karta hai — component me dikhane ke liye
+//   getUsersData(): Array<user> {
+//     return this.usersObjArr;
+//   }
+
+//   // ✅ Ye method ek user ko select karta hai (edit mode me bhejne ke liye)
+//   selectUser(user: user) {
+//     this.selectedUserSubject.next(user); // Observable me value emit hoti hai
+//   }
+
+//   // ✅ Edit mode clear karne ke liye null emit karte hain
+//   clearSelectedUser() {
+//     this.selectedUserSubject.next(null);
+//   }
+
+//   // ✅ Naya user object array me add karo aur localStorage update karo
+//   createObj(todo: user) {
+//     this.usersObjArr.push(todo); // Array me push kar diya
+//     localStorage.setItem('todoArr', JSON.stringify(this.usersObjArr)); // Local storage me update
+//   }
+
+//   // ✅ Existing user ko update karo (name update karne ke liye)
+//   updateObj(todo: user) {
+//     // ✅ User ke index ko find karo jiska ID match ho
+//     const index = this.usersObjArr.findIndex(u => u.id === todo.id);
+    
+//     if (index !== -1) {
+//       // ✅ Agar user mil gaya to usko replace karo naye data se
+//       this.usersObjArr[index] = todo;
+
+//       // ✅ Fir updated array ko localStorage me save karo
+//       localStorage.setItem('todoArr', JSON.stringify(this.usersObjArr));
+//     }
+//   }
+
+//   // ✅ Kisi user ko delete karne ke liye
+//   onRemove(id: string) {
+//     // ✅ Pehle us user ka index find karo
+//     const index = this.usersObjArr.findIndex(u => u.id === id);
+
+//     if (index !== -1) {
+//       // ✅ Agar mila to us index ko array se hata do
+//       this.usersObjArr.splice(index, 1);
+
+//       // ✅ Fir localStorage bhi update karo
+//       localStorage.setItem('todoArr', JSON.stringify(this.usersObjArr));
+//     }
+//   }
+// }
