@@ -39,6 +39,7 @@ export class TodoItemsComponent implements OnInit, OnDestroy {
       this.data.selectUser(user); // Observable me data emit karega
     }
   }
+  
 
 // ✅ Delete button par click hone par chalne wala method
 onDelete(id: string) {
