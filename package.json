@@ -45,5 +45,9 @@
   "main": "karma.conf.js",
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "overrides": {
+  "stylus": "0.54.8"
+}
+
 }
