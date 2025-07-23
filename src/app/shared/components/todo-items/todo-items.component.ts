@@ -60,7 +60,7 @@ onDelete(id: string) {
 
     if (result === true) { // ✅ Agar user ne "Yes" choose kiya (confirm delete)
 
-      this.data.onRemmove(id);  // ✅ DataService ka method call karke user delete karo
+      this.data.onRemove(id);  // ✅ DataService ka method call karke user delete karo
 
       // ✳️ Yahan aap optionally clearSelectedUser bhi call kar sakte ho
       // this.data.clearSelectedUser(); — taake edit mode me wo user ho to hata diya jaye

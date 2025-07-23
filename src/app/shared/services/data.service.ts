@@ -59,7 +59,7 @@ export class DataService {
   }
 
   // Ye method user ko delete karta hai uske id ke basis pe
-  onRemmove(id: string) {
+  onRemove(id: string) {
     // Array me find kiya gaya ki user kis index pe hai
     const removeObj = this.usersObjArr.findIndex(add => add.id === id);
     if (removeObj !== -1) {
