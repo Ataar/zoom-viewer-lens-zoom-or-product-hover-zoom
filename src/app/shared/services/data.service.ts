@@ -15,9 +15,9 @@ export class DataService {
 
   // Ye ek array hai jisme 3 user objects predefined hain
   usersObjArr: Array<user> = [
-    { name: 'Rahul', id: '1' },
-    { name: 'Priya', id: '2' },
-    { name: 'Aman', id: '3' }
+    // { name: 'Rahul', id: '1' },
+    // { name: 'Priya', id: '2' },
+    // { name: 'Aman', id: '3' }
   ];
 
 
@@ -92,6 +92,10 @@ export class DataService {
     if (removeObj !== -1) {
       // Agar user mil gaya to splice karke usse remove kar diya
       this.usersObjArr.splice(removeObj, 1);
+    localStorage.setItem('todoArr',JSON.stringify(this.usersObjArr))
+
     }
   }
 }
+
+
