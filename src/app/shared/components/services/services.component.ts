@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { TodoItem } from '../../module/todo';
 import { TodoService } from '../../services/todo.service';
 
@@ -10,6 +10,9 @@ import { TodoService } from '../../services/todo.service';
 export class ServicesComponent implements OnInit {
 
 todoData : Array<TodoItem> = []
+
+ @ViewChild('descInput') descInputRef!: ElementRef;
+
   constructor(
     private todoService : TodoService
   ) { }
@@ -21,16 +24,33 @@ todoData : Array<TodoItem> = []
 editingTodoId: number | null = null;
 originalDescription: string = '';
 
+// onEdit(id: number) {
+//   this.editingTodoId = id;
+
+//   // Backup the original description
+//   const todo = this.todoData.find(t => t.id === id);
+//   if (todo) {
+//     this.originalDescription = todo.description;
+//   }
+   
+// }
+
 onEdit(id: number) {
   this.editingTodoId = id;
 
-  // Backup the original description
   const todo = this.todoData.find(t => t.id === id);
   if (todo) {
     this.originalDescription = todo.description;
   }
-   
+
+  // Wait for the textarea to render before focusing
+  setTimeout(() => {
+    if (this.descInputRef) {
+      this.descInputRef.nativeElement.focus();
+    }
+  }, 0);
 }
+
 
 saveEdit() {
   if (this.editingTodoId !== null) {
