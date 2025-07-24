@@ -5,8 +5,28 @@
       <div class="card h-100">
         <img [src]="todo.imageUrl" class="card-img-top" alt="{{ todo.title }}">
         <div class="card-body">
-          <h5 class="card-title font-weight-bold">{{ todo.title }}</h5>
-          <p class="card-text">{{ todo.description }}</p>
+          <h5 class="card-title">{{ todo.title }}</h5>
+  
+<p class="card-text">
+  {{ todo.description }}
+</p>
+<p class="card-text" *ngIf="todo.rating !== undefined">
+  Rating:
+  <ng-container *ngFor="let star of [1,2,3,4,5]">
+    <span [ngClass]="star <= todo.rating ? 'text-warning' : 'text-secondary'">
+      &#9733;
+    </span>
+  </ng-container>
+  <span class="ms-1 small text-muted">({{ todo.rating }}/5)</span>
+</p>
+
+<div class="text-end m-2">
+ <button class="custom-edit-btn">
+  <i class="fas fa-pen text-center"></i> Edit
+</button>
+</div>
+
+
           <p class="text-muted">Status: 
             <span [ngClass]="{'text-success': todo.completed, 'text-danger': !todo.completed}">
               {{ todo.completed ? 'Done' : 'Pending' }}
@@ -18,3 +38,46 @@
     </div>
   </div>
 </div>
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+
+<!-- button examples -->
+
+<!-- 1 -->
+        <!-- <p class="card-text">{{ todo.description }}
+            <button mat-raised-button color="primary">Edit</button>
+          </p> -->
+          <!-- <p class="card-text">
+  {{ todo.description }}
+</p>
+<button mat-raised-button color="accent" class="edit-btn">
+  <mat-icon>edit</mat-icon> Edit
+</button> -->
+
+
+<!-- ------------------------------------------------------------------------ -->
+
+<!-- 2 -  -->
+
+
+<!-- Facebook-style Edit Button -->
+<!-- <div class="card h-100 position-relative card-wrapper">
+  <button class="fb-edit-btn" (click)="editTodo(todo)" title="Edit">
+    <i class="fas fa-pen"></i>
+  </button>
+
+  <img [src]="todo.imageUrl" class="card-img-top" alt="{{ todo.title }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ todo.title }}</h5>
+    <p class="card-text">{{ todo.description }}</p>
+
+    <p class="text-muted">Status:
+      <span [ngClass]="{'text-success': todo.completed, 'text-danger': !todo.completed}">
+        {{ todo.completed ? 'Done' : 'Pending' }}
+      </span>
+    </p>
+    <p class="small text-muted">Created: {{ todo.createdAt | date }}</p>
+  </div>
+</div> -->
