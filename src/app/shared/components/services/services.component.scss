@@ -33,6 +33,15 @@
   margin-bottom: 10px;
 }
 
+
+.text-end 
+{
+  display: flex;
+  gap:20px;
+  margin:10px 0px;
+}
+
+
 .text-muted {
   font-family: 'Segoe UI', sans-serif;
   font-size: 14px;
@@ -82,11 +91,6 @@ i.fas.fa-pen.text-center {
   margin-left: -2px; /* adjust positioning if needed */
 }
 
-.text-end
-{
-  display: flex;
-  gap:20px;
-}
 
 
 .custom-edit-btn:hover {
