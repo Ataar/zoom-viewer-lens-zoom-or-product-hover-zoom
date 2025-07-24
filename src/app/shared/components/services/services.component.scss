@@ -11,6 +11,8 @@
 //   margin-bottom: 10px;         /* Space below the title */
 // }
 
+
+
 .card-title {
   font-family: 'Georgia', 'Times New Roman', serif;
   font-size: 20px;
@@ -62,13 +64,30 @@
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
+// .custom-edit-btn i {
+//   margin:0 5px;
+// }
+
+// i.fas.fa-pen.text-center {
+//     margin-left: -2px;
+// }
+
 .custom-edit-btn i {
-  margin: 2px;
+  margin: 0 5px; /* spacing around the icon */
+  vertical-align: middle; /* align nicely with text */
 }
 
+/* Optional: if you're using a specific `.text-center` class somewhere */
 i.fas.fa-pen.text-center {
-    margin-left: -2px;
+  margin-left: -2px; /* adjust positioning if needed */
 }
+
+.text-end
+{
+  display: flex;
+  gap:20px;
+}
+
 
 .custom-edit-btn:hover {
   background-color: #1ebd5a;
@@ -76,6 +95,10 @@ i.fas.fa-pen.text-center {
 }
 
 
+.btnIcon
+{
+  margin:10px -2px;
+}
 
 // -----------------------------------------------------------------------
 

@@ -353,15 +353,38 @@ export class TodoService {
 ];
 
 
-constructor() {
-  this.todos = this.todos.map(todo => ({
-    ...todo,
-    rating: Math.floor(Math.random() * 5) + 1 // Random rating between 1 and 5
-  }));
-}
+
+  constructor() {
+    // Assign dynamic ratings
+    this.todos = this.todos.map(todo => ({
+      ...todo,
+      rating: Math.floor(Math.random() * 5) + 1
+    }));
+  }
+
+  // constructor() {
+  //   // Assign dynamic ratings
+  //   this.todos = this.todos.map(todo => ({
+  //     ...todo,
+  //     rating: +((Math.random() * 4 + 1).toFixed(1)) // e.g., 3.7, 4.5
+
+  //   }));
+  // }
+
 
 
   getTodos(): TodoItem[] {
+    const storedData = localStorage.getItem('serviceTodoArr');
+    if (storedData) {
+      this.todos = JSON.parse(storedData);
+    }
     return this.todos;
   }
+
+  setTodos(updatedTodos: TodoItem[]) {
+    this.todos = updatedTodos;
+    localStorage.setItem('serviceTodoArr', JSON.stringify(this.todos));
+  }
 }
+
+

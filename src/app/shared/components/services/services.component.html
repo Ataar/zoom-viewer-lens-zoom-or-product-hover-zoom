@@ -2,6 +2,67 @@
 <div class="container mt-4">
   <div class="row">
     <div *ngFor="let todo of todoData" class="col-md-4 mb-4">
+      <div class="card h-100 position-relative">
+        <img [src]="todo.imageUrl" class="card-img-top" alt="{{ todo.title }}">
+
+        <div class="card-body">
+          <h5 class="card-title">{{ todo.title }}</h5>
+
+          <!-- Description Section -->
+          <div *ngIf="editingTodoId === todo.id; else viewDescription">
+            <textarea [(ngModel)]="todo.description" class="form-control" rows="3"></textarea>
+            <div class="mt-2 text-end">
+              <button class="btn btn-sm btn-success me-2" (click)="saveEdit()">Save</button>
+              <button class="btn btn-sm btn-secondary" (click)="cancelEdit()">Cancel</button>
+            </div>
+          </div>
+
+          <ng-template #viewDescription>
+            <p class="card-text">
+              {{ todo.description }}
+            </p>
+          </ng-template>
+
+          <!-- Star Rating -->
+          <p class="card-text" *ngIf="todo.rating !== undefined">
+            Rating:
+            <ng-container *ngFor="let star of [1,2,3,4,5]">
+              <span [ngClass]="star <= todo.rating ? 'text-warning' : 'text-secondary'">
+                &#9733;
+              </span>
+            </ng-container>
+            <span class="ms-1 small text-muted">({{ todo.rating }}/5)</span>
+          </p>
+
+          <!-- Edit Button -->
+          <div class="btnIcon">
+            <button class="btn btn-outline-primary btn-sm custom-edit-btn" (click)="onEdit(todo.id)">
+              <i class="fas fa-pen me-2"></i> Edit
+            </button>
+          </div>
+
+          <!-- Status and Date -->
+          <p class="text-muted">Status:
+            <span [ngClass]="{ 'text-success': todo.completed, 'text-danger': !todo.completed }">
+              {{ todo.completed ? 'Done' : 'Pending' }}
+            </span>
+          </p>
+          <p class="small text-muted">Created: {{ todo.createdAt | date }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ################################################################################################### -->
+
+
+
+<!-- 
+<div class="container mt-4">
+  <div class="row">
+    <div *ngFor="let todo of todoData" class="col-md-4 mb-4">
       <div class="card h-100">
         <img [src]="todo.imageUrl" class="card-img-top" alt="{{ todo.title }}">
         <div class="card-body">
@@ -10,7 +71,8 @@
 <p class="card-text">
   {{ todo.description }}
 </p>
-<p class="card-text" *ngIf="todo.rating !== undefined">
+
+ <p class="card-text" *ngIf="todo.rating !== undefined">
   Rating:
   <ng-container *ngFor="let star of [1,2,3,4,5]">
     <span [ngClass]="star <= todo.rating ? 'text-warning' : 'text-secondary'">
@@ -18,7 +80,11 @@
     </span>
   </ng-container>
   <span class="ms-1 small text-muted">({{ todo.rating }}/5)</span>
-</p>
+</p> 
+
+
+
+
 
 <div class="text-end m-2">
  <button class="custom-edit-btn">
@@ -37,7 +103,24 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+
+<!-- ####################################################################################################### -->
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 <!-- ------------------------------------------------------------------------ -->

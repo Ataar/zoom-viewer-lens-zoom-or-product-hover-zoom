@@ -21,7 +21,7 @@ import { TodoItemsComponent } from './components/todo-items/todo-items.component
     ServicesComponent,
     ContactComponent,
     TodoComponent,
-    TodoItemsComponent
+    TodoItemsComponent,
   ],
   imports: [
     CommonModule,
