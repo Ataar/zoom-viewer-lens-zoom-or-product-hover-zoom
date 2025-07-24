@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
-import { TodoItem } from '../module/todo';
+import { TodoItem } from '../module/todo';   // ✅ Aapka interface file (id, title, etc.)
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root'   // ✅ Service global level par available hai
 })
 export class TodoService {
 
+  // ✅ Todo list array 
  private todos: TodoItem[] = [
   {
     id: 1,
@@ -342,13 +343,13 @@ export class TodoService {
     rating: 5
   },
   {
-    id: 38,
-    title: 'Greenhouse Gardening',
-    description: 'Plant seeds and water herbs.',
+    id: 38, // Unique ID
+    title: 'Greenhouse Gardening',   // Task ka title
+    description: 'Plant seeds and water herbs.', // Short detail
     imageUrl: 'https://images.pexels.com/photos/450301/pexels-photo-450301.jpeg?auto=compress&cs=tinysrgb&h=200&w=300',
-    completed: false,
-    createdAt: new Date('2025-07-15'),
-    rating: 4
+    completed: false,  // Task complete hai ya nahi
+    createdAt: new Date('2025-07-15'), // Task banne ki date
+    rating: 4       // Initial rating (1–5)
   }
 ];
 
@@ -356,11 +357,15 @@ export class TodoService {
 
   constructor() {
     // Assign dynamic ratings
+      // ✅ Service load hote hi sabhi todos me random rating assign kar di jaati hai
+
     this.todos = this.todos.map(todo => ({
-      ...todo,
-      rating: Math.floor(Math.random() * 5) + 1
-    }));
+      ...todo,   // Spread operator: saare existing fields copy karo
+      rating: Math.floor(Math.random() * 5) + 1  // Random rating (1 to 5)
+    })); 
   }
+
+     // 🔁 Alternate version (floating point rating) — optional
 
   // constructor() {
   //   // Assign dynamic ratings
@@ -373,18 +378,33 @@ export class TodoService {
 
 
 
+  // ✅ Sabhi todos ko fetch karne wala method
   getTodos(): TodoItem[] {
+
+      // 🔎 Pehle check karo ki localStorage me data hai ya nahi
     const storedData = localStorage.getItem('serviceTodoArr');
     if (storedData) {
+       // ✅ Agar hai to JSON parse karke todos me overwrite karo
       this.todos = JSON.parse(storedData);
     }
+
+    // ✅ Latest todos return karo
     return this.todos;
   }
 
+
+  
+  // ✅ Jab bhi todo list update ho (add/delete/edit), use yahan save karo
   setTodos(updatedTodos: TodoItem[]) {
-    this.todos = updatedTodos;
+    this.todos = updatedTodos;   // In-memory update
     localStorage.setItem('serviceTodoArr', JSON.stringify(this.todos));
   }
 }
 
 
+// | Function/Part   | Purpose                                                            |
+// | --------------- | ------------------------------------------------------------------ |
+// | `todos[]`       | Sabhi todo items store karta hai                                   |
+// | `constructor()` | Sabhi todos me random rating assign karta hai                      |
+// | `getTodos()`    | LocalStorage se data fetch karta hai (ya default return karta hai) |
+// | `setTodos()`    | Todos ko in-memory aur localStorage dono me update karta hai       |
