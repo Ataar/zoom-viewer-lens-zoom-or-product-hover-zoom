@@ -64,33 +64,25 @@
   background-color: #25d366; /* WhatsApp green */
   color: white;
   border: none;
-  border-radius: 50px;
-  padding: 6px 18px;
+  border-radius: 12px;
+  padding: 8px 20px;
   font-size: 14px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  
 }
 
-// .custom-edit-btn i {
-//   margin:0 5px;
-// }
 
-// i.fas.fa-pen.text-center {
-//     margin-left: -2px;
-// }
+.btnIcon
+{
+  margin:10px -2px;
+}
 
 .custom-edit-btn i {
-  margin: 0 5px; /* spacing around the icon */
-  vertical-align: middle; /* align nicely with text */
+  margin-right: 6px;
 }
-
-/* Optional: if you're using a specific `.text-center` class somewhere */
-i.fas.fa-pen.text-center {
-  margin-left: -2px; /* adjust positioning if needed */
-}
-
 
 
 .custom-edit-btn:hover {
@@ -99,10 +91,8 @@ i.fas.fa-pen.text-center {
 }
 
 
-.btnIcon
-{
-  margin:10px -2px;
-}
+
+
 
 // -----------------------------------------------------------------------
 
