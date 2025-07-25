@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
-import { ServicesComponent } from './shared/components/services/services.component';
-import { ContactComponent } from './shared/components/contact/contact.component';
+import { TodoFormComponent } from './shared/components/todo-form/todo-form.component';
+import { TodoItemsComponent } from './shared/components/todo-items/todo-items.component';
 
 const routes: Routes = [ 
 
@@ -18,14 +18,13 @@ const routes: Routes = [
   component:HomeComponent
 },
 {
-  
-path:'services',
-component:ServicesComponent
+  path:'services',
+component:TodoFormComponent
 },
 
 {
   path:'actions',
-  component:ContactComponent
+  component:TodoItemsComponent
 }
 
 ];  

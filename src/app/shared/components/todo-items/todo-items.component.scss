@@ -1,35 +1,46 @@
-.card
+.card {
+  transition: transform 0.2s ease;
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+
+.card-title
 {
-    background-color: rgb(168, 148, 151);
-    color: white;
-    font-weight: bold;;
-    font-size:16px;
-    font-family:georgia
+    font-style: italic;
+    font-family: georgia;
+    letter-spacing: 1px;
 }
 
-.btn-group{
-    display: flex;
-    gap:20px;
-}
-
-.icon-button-slim {
-  padding-left: 2px !important;
-  padding-right: 2px !important;
-  padding-top: 2px;
-  
+.badge
+{
+    background-color: rgb(77, 236, 77);
+    color: rgb(59, 54, 54);
+    font-size: 12px;
+    // letter-spacing: 1px;
+    padding: 8px 10px;
+    margin:5px;
+    text-transform: capitalize;
 }
 
 
+.bg-success {
+    background-color: #97f7ae!important;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.bg-info
+{
+    background-color: rgb(153, 153, 238);
+}
 
 
 
-.icon-circle {
-//   background-color: rgba(0, 0, 0, 0.1); /* Light gray background */
-  background-color: rgba(255, 255, 255, 0.1); /* Light gray background */
-
-  border-radius: 50%;
-  padding: 20px;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
+.bg-secondary {
+    background-color: #b4aea6!important;
+    // color: white;
+    padding: 5px 10px;
+    border-radius: 10px;
 }

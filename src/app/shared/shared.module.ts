@@ -8,20 +8,16 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { HomeComponent } from './components/home/home.component';
-import { ServicesComponent } from './components/services/services.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { TodoComponent } from './components/todo-form/todo-form.component';
 import { TodoItemsComponent } from './components/todo-items/todo-items.component';
+import { TodoFormComponent } from './components/todo-form/todo-form.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ConfirmDialogComponent,
     HomeComponent,
-    ServicesComponent,
-    ContactComponent,
-    TodoComponent,
     TodoItemsComponent,
+    TodoFormComponent
   ],
   imports: [
     CommonModule,
@@ -29,6 +25,7 @@ import { TodoItemsComponent } from './components/todo-items/todo-items.component
     ReactiveFormsModule,
     RouterModule,
     MaterialModule
+    
   ],
   exports: [
     CommonModule,
@@ -38,10 +35,8 @@ import { TodoItemsComponent } from './components/todo-items/todo-items.component
     MaterialModule,
     NavbarComponent,
     HomeComponent,
-    ServicesComponent,
-    ContactComponent,
-    TodoComponent,
-    TodoItemsComponent
+    TodoItemsComponent,
+    TodoFormComponent
   ]
 })
 export class SharedModule {}
