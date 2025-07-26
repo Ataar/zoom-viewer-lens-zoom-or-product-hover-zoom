@@ -1,33 +1,114 @@
 
-// 📦 Import core Angular functionality
+// // 📦 Import core Angular functionality
+// import { Component, OnInit } from '@angular/core';
+// @Component({
+//   selector: 'app-todo-items',                  // 🔹 Custom HTML tag used for this component
+//   templateUrl: './todo-items.component.html',  // 🔹 HTML template for this component
+//   styleUrls: ['./todo-items.component.scss']   // 🔹 SCSS styling specific to this component
+// })
+// export class TodoItemsComponent implements OnInit {
+
+
+
+
+
+//   ngOnInit(): void {
+    
+//   }
+
+ 
+// }
+
+
+// ###############################################################################################
+
+// example 1
+
+// import { Component, OnInit } from '@angular/core';
+// import { Product, ProductService } from '../../services/todo-service.service';
+
+// @Component({
+//   selector: 'app-todo-items',
+//   templateUrl: './todo-items.component.html',
+//   styleUrls: ['./todo-items.component.scss']
+// })
+// export class TodoItemsComponent implements OnInit {
+//   products: Product[] = [];
+//   hoveredProductId: number | null = null;
+
+//   constructor(private productService: ProductService) {}
+
+//   ngOnInit(): void {
+//     this.products = this.productService.getAllProducts();
+//   }
+// }
+
+
+// ###############################################################################################
+
+
 import { Component, OnInit } from '@angular/core';
+import { Product, ProductService } from '../../services/todo-service.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
-// 📦 Import the custom Todo service to fetch todo data
-import { TodoServiceService } from '../../services/todo-service.service';
-
-// 📦 Import the Todo array type or interface
-import { todoArr } from '../../module/todo';
-
-// 🧩 Component decorator to define selector, template, and styles
 @Component({
-  selector: 'app-todo-items',                  // 🔹 Custom HTML tag used for this component
-  templateUrl: './todo-items.component.html',  // 🔹 HTML template for this component
-  styleUrls: ['./todo-items.component.scss']   // 🔹 SCSS styling specific to this component
+  selector: 'app-todo-items',
+  templateUrl: './todo-items.component.html',
+  styleUrls: ['./todo-items.component.scss']
 })
 export class TodoItemsComponent implements OnInit {
+  products: Product[] = [];
+  hoveredProductId: number | null = null;
 
-  // 📌 Array to store todo items retrieved from the service
-  todoData: todoArr[] = [];
+  // Track wishlist items
+  wishlist: Set<number> = new Set();
 
-  // 🔧 Injecting the Todo service using Angular's dependency injection
-  constructor(private todoService: TodoServiceService) {}
+ constructor(
+  private productService: ProductService,
+  private snackBar: MatSnackBar
+) {}
 
-  // 🚀 Lifecycle hook called once the component is initialized
+
   ngOnInit(): void {
-    // 📥 Fetch todos from the service and store in `todoData`
-    this.todoData = this.todoService.getTodos();
+    this.products = this.productService.getAllProducts();
   }
+
+  toggleWishlist(productId: number): void {
+    if (this.wishlist.has(productId)) {
+      this.wishlist.delete(productId);
+    } else {
+      this.wishlist.add(productId);
+    }
+  }
+
+  isWishlisted(productId: number): boolean {
+    return this.wishlist.has(productId);
+  }
+  addToCart(product: Product): void {
+  this.snackBar.open(`🛒 " ${product.title} added to cart!`, '', {
+    duration: 3000,         // auto-close after 3s
+    horizontalPosition: 'center',
+    verticalPosition: 'top',
+    panelClass: ['snackbar-success']
+  });
 }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
