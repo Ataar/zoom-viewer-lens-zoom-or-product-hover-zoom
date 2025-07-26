@@ -1,22 +1,142 @@
+<!-- 🔶 Container: Bootstrap layout container with top margin -->
+<div class="container mt-4">
+
+  <!-- 🔷 Row: Bootstrap 12-column grid row -->
+  <div class="row">
+
+    <!-- 🔁 One column per todo item (col-md-4 = 3 items per row) -->
+    <div class="col-md-4 mb-4" *ngFor="let todo of todoData">
+      <!-- *ngFor = Angular directive to loop through todos
+           todoData = array containing all todo objects -->
+
+      <!-- 📦 Card Component -->
+      <div class="card h-100 shadow-sm">
+        <!-- h-100 = makes card height 100% of the container
+             shadow-sm = small box shadow for card -->
+
+        <!-- 🖼️ Image Section -->
+        <img 
+          [src]="todo.imageUrl"
+          class="card-img-top"
+          [alt]="todo.title"
+          style="height: 200px; object-fit: cover;" />
+        <!-- [src] = Angular property binding to get image from imageUrl
+             [alt] = for accessibility: shows title if image fails to load
+             style = fixed height and cover to maintain image aspect ratio -->
+
+        <!-- 📄 Card Body -->
+        <div class="card-body">
+
+          <!-- 📝 Title -->
+          <h5 class="card-title">{{ todo.title }}</h5>
+          <!-- card-title = Bootstrap class for card heading -->
+
+          <!-- 📃 Description -->
+          <p class="card-text">{{ todo.description }}</p>
+          <!-- card-text = Bootstrap class for paragraph text -->
+
+          <!-- 📅 Due Date -->
+          <p>
+            <i class="fas fa-calendar-alt text-info mr-2"></i>
+            <strong>Due:</strong> {{ todo.dueDate }}
+          </p>
+          <!-- fas fa-calendar-alt = FontAwesome calendar icon
+               text-info = Bootstrap info color (blue)
+               mr-2 = margin-right spacing -->
+
+          <!-- ⚠️ Priority -->
+          <p>
+            <strong>Priority:</strong> {{ todo.priority }}
+          </p>
+
+          <!-- ✅ Status with Badge and Icon -->
+          <p>
+            <i class="fas fa-tasks text-info mr-2 "></i>
+            <strong>Status:</strong>
+            <span 
+              [ngClass]="{
+                'badge bg-success' : todo.status === 'Completed',
+                'badge bg-secondary' : todo.status === 'Pending',
+                'badge bg-info' : todo.status === 'In Progress'
+              }">
+              {{ todo.status }}
+            </span>
+          </p>
+          <!-- [ngClass] = Angular directive to apply CSS classes conditionally
+               badge bg-success = green for Completed
+               badge bg-secondary = gray for Pending
+               badge bg-info = blue for In Progress -->
+
+          <!-- 👤 Assigned To -->
+          <p>
+            <i class="fas fa-user-circle text-primary mr-1"></i>
+            <strong>Assigned To:</strong> {{ todo.assignedTo }}
+          </p>
+
+          <!-- 🏷️ Tags Section -->
+          <div>
+            <i class="fas fa-tags text-secondary mr-1"></i>
+            <strong>Tags:</strong>
+            <span *ngFor="let tag of todo.tags" class="badge">{{ tag }}</span>
+          </div>
+          <!-- todo.tags = array of strings (tags)
+               badge = Bootstrap label style class -->
+
+          <!-- ⭐ Rating Section -->
+          <div class="mt-2">
+            <strong>Rating:</strong>
+            <ng-container *ngFor="let star of [].constructor(todo.rating)">
+              ⭐
+            </ng-container>
+          </div>
+          <!-- [].constructor(n) = Angular way to repeat n times (to show stars) -->
+
+          <!-- 💬 Comments Section -->
+          <div *ngIf="todo.comments.length > 0" class="mt-2">
+            <i class="fas fa-comments text-success mr-2"></i>
+            <strong>Comments:</strong>
+            <ul class="list-unstyled">
+              <li *ngFor="let comment of todo.comments">
+                <small class="text-muted">
+                  <strong>{{ comment.user }}:</strong> {{ comment.message }} ({{ comment.date }})
+                </small>
+              </li>
+            </ul>
+          </div>
+          <!-- todo.comments = array of comment objects
+               list-unstyled = removes bullet points from list -->
+        </div> <!-- End of card-body -->
+      </div> <!-- End of card -->
+
+    </div> <!-- End of col-md-4 -->
+  </div> <!-- End of row -->
+</div> <!-- End of container -->
+
+
+
+<!-- #################################################################################################### -->
+
+
+
 <!-- src/app/components/todo-items/todo-items.component.html -->
 
-<div class="container mt-4">
+<!-- <div class="container mt-4">
   <div class="row">
     <div class="col-md-4 mb-4" *ngFor="let todo of todoData">
-      <div class="card h-100 shadow-sm">
+      <div class="card h-100 shadow-sm"> -->
         <!-- <img [src]="todo.imageUrl" class="card-img-top" [alt]="todo.title" style="height: 200px; object-fit: cover;" /> -->
-      <img [src]="todo.imageUrl"
+      <!-- <img [src]="todo.imageUrl"
      class="card-img-top"
      [alt]="todo.title"
-     style="height: 200px; object-fit: cover;" />
+     style="height: 200px; object-fit: cover;" /> -->
 
-        <div class="card-body">
+        <!-- <div class="card-body">
           <h5 class="card-title">{{ todo.title }}</h5>
           <p class="card-text">{{ todo.description }}</p>
           <p><i class="fas fa-calendar-alt text-info mr-2"></i><strong>Due:</strong> {{ todo.dueDate }}</p>
-          <p><strong>Priority:</strong> {{ todo.priority }}</p>
+          <p><strong>Priority:</strong> {{ todo.priority }}</p> -->
           <!-- <p><strong>Status:</strong> {{ todo.status }}</p> -->
- <p>
+ <!-- <p>
   <i class="fas fa-tasks text-info mr-2 "></i>
   <strong>Status : </strong>
   <span [ngClass]="{
@@ -56,7 +176,17 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
+
+
+
+
+
+
+
+
+
+<!-- #################################################################################################### -->
 
 
 
@@ -67,6 +197,12 @@
 
 
 
+
+
+
+
+
+<!-- For more Styling -->
 
 <!-- <div class="container mt-4">
   <div class="row">
