@@ -10,6 +10,7 @@ import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dial
 import { HomeComponent } from './components/home/home.component';
 import { TodoItemsComponent } from './components/todo-items/todo-items.component';
 import { TodoFormComponent } from './components/todo-form/todo-form.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { TodoFormComponent } from './components/todo-form/todo-form.component';
     ConfirmDialogComponent,
     HomeComponent,
     TodoItemsComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    DashboardComponent
   ],
   imports: [
     CommonModule,

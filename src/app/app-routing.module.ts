@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './shared/components/home/home.component';
 import { TodoFormComponent } from './shared/components/todo-form/todo-form.component';
 import { TodoItemsComponent } from './shared/components/todo-items/todo-items.component';
+import { DashboardComponent } from './shared/components/dashboard/dashboard.component';
 
 const routes: Routes = [ 
 
@@ -12,18 +13,18 @@ const routes: Routes = [
      redirectTo:'home',
      pathMatch:'full'
   },
+  
+  {
+    path:'home',
+    component:DashboardComponent
+  },
+  {
+  path:'products',
+  component:TodoItemsComponent
+  },
 
 {
-  path:'home',
-  component:HomeComponent
-},
-{
-  path:'services',
-component:TodoFormComponent
-},
-
-{
-  path:'actions',
+  path:'categories',
   component:TodoItemsComponent
 }
 

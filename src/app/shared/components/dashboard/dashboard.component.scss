@@ -1,0 +1,19 @@
+.dashboard-container {
+  background-color: #f8f9fa;
+  min-height: 100vh;
+
+  .stat-card {
+    background: white;
+    transition: all 0.2s ease;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+select.form-select {
+  font-size: 0.9rem;
+  padding: 4px 8px;
+}
