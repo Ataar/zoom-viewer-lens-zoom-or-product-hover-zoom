@@ -18,3 +18,26 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 // }
 
 
+// body.light-mode {
+//   background-color: #f8f9fa;
+//   color: #212529;
+// }
+
+// body.dark-mode {
+//   background-color: #121212;
+//   color: #ffffff;
+// }
+
+// /* Optional: Adjust button styles if needed */
+// .btn-outline-secondary {
+//   border-color: currentColor;
+// }
+body.dark-mode {
+  background-color: #121212;
+  color: white;
+}
+
+body.light-mode {
+  background-color: #f8f9fa;
+  color: #212529;
+}

@@ -38,7 +38,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     NavbarComponent,
     HomeComponent,
     TodoItemsComponent,
-    TodoFormComponent
+    TodoFormComponent,
+    DashboardComponent
   ]
 })
 export class SharedModule {}

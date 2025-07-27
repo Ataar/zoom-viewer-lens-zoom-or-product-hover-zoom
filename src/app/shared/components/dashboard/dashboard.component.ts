@@ -1,4 +1,5 @@
-import { Component, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2, OnDestroy } from '@angular/core';
+
 import Chart from 'chart.js/auto';
 
 @Component({
@@ -6,7 +7,8 @@ import Chart from 'chart.js/auto';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss']
 })
-export class DashboardComponent implements AfterViewInit {
+export class DashboardComponent implements OnInit, AfterViewInit , OnDestroy {
+  isDarkMode = false;
   selectedRange = 'Last 7 days';
 
   stats = [
@@ -16,6 +18,7 @@ export class DashboardComponent implements AfterViewInit {
     { title: 'Pending Shipments', value: 24, trend: '2%' },
   ];
 
+   constructor(private renderer: Renderer2) {}
   ngAfterViewInit(): void {
     this.initChart();
   }
@@ -51,4 +54,43 @@ export class DashboardComponent implements AfterViewInit {
       }
     });
   }
+
+
+
+
+
+ ngOnInit(): void {
+  const savedTheme = localStorage.getItem('theme');
+  this.isDarkMode = savedTheme === 'dark';
+  this.updateTheme();
 }
+
+
+  toggleDarkMode(): void {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    this.updateTheme();
+  }
+
+  updateTheme(): void {
+    if (this.isDarkMode) {
+      this.renderer.addClass(document.body, 'dark-mode');
+      this.renderer.removeClass(document.body, 'light-mode');
+    } else {
+      this.renderer.addClass(document.body, 'light-mode');
+      this.renderer.removeClass(document.body, 'dark-mode');
+    }
+  }
+
+
+  ngOnDestroy(): void {
+    this.renderer.removeClass(document.body, 'dark-mode');
+    this.renderer.removeClass(document.body, 'light-mode');
+  }
+
+
+}
+ 
+  
+
+

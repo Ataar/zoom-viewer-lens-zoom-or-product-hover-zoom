@@ -1,35 +1,77 @@
-<div class="dashboard-container p-4">
-  <!-- Top Bar -->
-  <div class="d-flex justify-content-between align-items-center mb-4">
-    <h3 class="fw-bold">Welcome, Seller 👋</h3>
-    <button class="btn btn-outline-primary">🔄 Refresh</button>
-  </div>
 
-  <!-- Stats Cards -->
-  <div class="row g-4">
-    <div class="col-md-3" *ngFor="let stat of stats">
-      <div class="card border-0 shadow-sm rounded-4 stat-card">
+<!-- <div class="p-3 text-right">
+  <button class="btn" (click)="toggleDarkMode()">
+    <i 
+      class="fas mr-2"
+      [ngClass]="isDarkMode ? 'fa-sun text-warning' : 'fa-moon text-light'"
+      style="font-size: 1.2rem;"
+    ></i>
+    <span class="fw-semibold">
+      {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
+    </span>
+  </button>
+</div> -->
+
+<!-- <div class="text-right p-2">
+  <button class="mode-toggle-btn" (click)="toggleDarkMode()" [attr.aria-label]="isDarkMode ? 'Light Mode' : 'Dark Mode'">
+    <i class="fas" [ngClass]="isDarkMode ? 'fa-sun' : 'fa-moon'"></i>
+  </button>
+</div> -->
+
+
+
+
+<div class="text-right">
+  <label class="switch-mode">
+    <input type="checkbox" [checked]="isDarkMode" (change)="toggleDarkMode()">
+    <span class="slider">
+      <i class="fas fa-moon icon-left"></i>
+      <i class="fas fa-sun icon-right"></i>
+    </span>
+  </label>
+</div>
+
+
+
+
+
+
+    <div class="dashboard-container p-4">
+      <!-- Top Bar -->
+      <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold">Welcome, Seller 👋</h3>
+    <!-- <button class="btn btn-outline-primary">🔄 Refresh</button> -->
+    
+      </div>
+    
+      <!-- Stats Cards -->
+      <div class="row g-4">
+        <div class="col-md-3" *ngFor="let stat of stats">
+          <div class="card border-0 shadow-sm rounded-4 stat-card">
+            <div class="card-body">
+              <h6 class="text-muted">{{ stat.title }}</h6>
+              <h3 class="fw-semibold">{{ stat.value }}</h3>
+              <p class="text-success small">{{ stat.trend }} ↑ from last week</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Sales Chart -->
+      <div class="card mt-5 border-0 shadow-sm rounded-4">
         <div class="card-body">
-          <h6 class="text-muted">{{ stat.title }}</h6>
-          <h3 class="fw-semibold">{{ stat.value }}</h3>
-          <p class="text-success small">{{ stat.trend }} ↑ from last week</p>
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h5 class="card-title mb-0">📈 Weekly Sales Overview</h5>
+            <select class="form-select w-auto" [(ngModel)]="selectedRange">
+              <option>Last 7 days</option>
+              <option>Last 30 days</option>
+              <option>Last 3 months</option>
+            </select>
+          </div>
+          <canvas id="salesChart" height="100"></canvas>
         </div>
       </div>
     </div>
-  </div>
+    
 
-  <!-- Sales Chart -->
-  <div class="card mt-5 border-0 shadow-sm rounded-4">
-    <div class="card-body">
-      <div class="d-flex justify-content-between align-items-center mb-3">
-        <h5 class="card-title mb-0">📈 Weekly Sales Overview</h5>
-        <select class="form-select w-auto" [(ngModel)]="selectedRange">
-          <option>Last 7 days</option>
-          <option>Last 30 days</option>
-          <option>Last 3 months</option>
-        </select>
-      </div>
-      <canvas id="salesChart" height="100"></canvas>
-    </div>
-  </div>
-</div>
+

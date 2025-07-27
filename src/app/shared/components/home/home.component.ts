@@ -1,5 +1,5 @@
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Renderer2 } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,17 +8,31 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
+isDarkMode = false;
 
+  constructor(private renderer: Renderer2) {}
 
-  constructor() {}
-
-  ngOnInit(): void {
-   
-
-      
-
+  ngOnInit() {
+    const theme = localStorage.getItem('theme');
+    this.isDarkMode = theme === 'dark';
+    this.applyTheme();
   }
 
+  toggleDarkMode() {
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
+    this.applyTheme();
+  }
+
+  applyTheme() {
+    if (this.isDarkMode) {
+      this.renderer.addClass(document.body, 'dark-mode');
+      this.renderer.removeClass(document.body, 'light-mode');
+    } else {
+      this.renderer.addClass(document.body, 'light-mode');
+      this.renderer.removeClass(document.body, 'dark-mode');
+    }
+  }
  
 }
      
