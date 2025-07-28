@@ -78,17 +78,65 @@
           </ul>
 
           <!-- Add to Cart -->
-          <!-- <div class="mt-auto d-grid">
-            <button class="btn btn-success rounded-pill fw-semibold">
+       <!-- <div class="mt-auto d-grid d-flex justify-content-between">
+            <button (click)="addToCart(product)" class="btn btn-success rounded-pill fw-semibold">
               <i class="fas fa-shopping-cart me-1"></i> Add to Cart
             </button>
-          </div> -->
-          <button
+
+               <button class="btn byNow rounded-pill fw-semibold">
+              <i class="fas fa-shopping-cart me-1"></i> By Now
+            </button>
+          </div>  -->
+
+
+<div class="mt-auto d-flex justify-content-between">
+<button (click)="addToCart(product)" class="btn custom-cart-btn rounded-pill mr-3 fw-semibold flex-fill">
+<i class="fas fa-shopping-cart me-1"></i> Add to Cart
+</button>
+
+
+<!-- ---------------------------------------------------------------------- -->
+ <!-- 1- -->
+<!-- <button (click)="byNow(product)" class="btn custom-buy-btn rounded-pill fw-semibold flex-fill">
+<i class="fas fa-bolt me-1"></i> Buy Now
+</button>
+</div> -->
+
+<!-- ---------------------------------------------------------------------- -->
+
+<!-- 2 -->
+
+<!-- <button (click)="byNow(product)" class="btn custom-buy-btn rounded-pill fw-semibold flex-fill" [disabled]="isProcessing">
+  <span *ngIf="!isProcessing"><i class="fas fa-bolt me-1"></i> Buy Now</span>
+  <span *ngIf="isProcessing"><i class="fas fa-spinner fa-spin me-1"></i> Processing...</span>
+</button> -->
+
+<!-- ---------------------------------------------------------------------- -->
+
+
+<button (click)="byNow(product)"
+        class="btn custom-buy-btn rounded-pill fw-semibold flex-fill"
+        [disabled]="isProcessing">
+  <span *ngIf="!isProcessing">
+    <i class="fas fa-bolt me-1"></i> Buy Now
+  </span>
+  <span *ngIf="isProcessing">
+    <i class="fas fa-spinner fa-spin me-1"></i> Processing...
+  </span>
+</button>
+
+
+
+
+<!-- To Show only Add to cart Button -->
+
+          <!-- <button
   class="btn btn-success rounded-pill fw-semibold"
   (click)="addToCart(product)"
 >
   <i class="fas fa-shopping-cart me-1"></i> Add to Cart
-</button>
+</button> -->
+
 
         </div>
 

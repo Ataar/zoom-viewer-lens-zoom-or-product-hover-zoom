@@ -120,15 +120,77 @@
   border-radius: 0.4rem;
 }
 
-.btn-success {
-  background-color: #00a651;
+// .btn-success {
+//   background-color: #00a651;
+//   border: none;
+//   transition: background-color 0.3s ease;
+
+//   &:hover {
+//     background-color: #009147;
+//   }
+// }
+
+// .byNow
+// {
+//   background-color: #fffb03;
+//   border: none;
+//   transition: background-color 0.3s ease;
+// }
+
+
+.custom-cart-btn {
+  background: linear-gradient(to right, #ff9a00, #ff6a00);
+  color: #fff;
   border: none;
-  transition: background-color 0.3s ease;
+  box-shadow: 0 4px 12px rgba(255, 106, 0, 0.3);
+  transition: all 0.3s ease-in-out;
 
   &:hover {
-    background-color: #009147;
+    background: linear-gradient(to right, #ffb347, #ff6a00);
+    box-shadow: 0 6px 14px rgba(255, 106, 0, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 }
+
+.custom-buy-btn {
+  background: linear-gradient(to right, #007bff, #0056b3);
+  color: #fff;
+  border: none;
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
+  transition: all 0.3s ease-in-out;
+
+  &:hover {
+    background: linear-gradient(to right, #3399ff, #0056b3);
+    box-shadow: 0 6px 14px rgba(0, 123, 255, 0.5);
+    transform: translateY(-2px);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+}
+
+
+// ###################################################################
+
+
+button.swal2-close {
+  position: absolute !important;
+  top: -4px;
+  right: -4px; /* You can also add this */
+}
+
+
+
+
+
+
+// #######################################################################
+
 
 
 .wishlist-btn {
@@ -143,6 +205,15 @@
 
 .product-card:hover .wishlist-btn {
   opacity: 1;
+}
+
+
+::ng-deep .snackbar-success
+{
+  color: white;
+  display: flex !important;
+  justify-content: center;
+  align-items: center;
 }
 
 // ##########################################################################################################
