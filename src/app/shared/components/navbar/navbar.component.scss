@@ -65,8 +65,9 @@ height: 70px;
   left: 0px;
   bottom: 0px;
   width: 100%;
-  height: 2px;
-  background-color: rgb(55, 236, 145);
+  height: 3px;
+  background-color: rgb(222, 253, 48);
+  // background-color: rgb(55, 236, 145);
   transform: scaleX(0);
   transform-origin: bottom left;
   transition: transform 0.3s ease;
@@ -117,3 +118,7 @@ height: 70px;
   // padding: 10px 30px;
 }
 
+.navbar-dark .navbar-nav .nav-item.active .nav-link:hover {
+  color: #eb7db9 !important;
+  
+}
