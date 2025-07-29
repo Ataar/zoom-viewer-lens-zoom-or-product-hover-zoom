@@ -116,14 +116,15 @@
 
 <button (click)="byNow(product)"
         class="btn custom-buy-btn rounded-pill fw-semibold flex-fill"
-        [disabled]="isProcessing">
-  <span *ngIf="!isProcessing">
+        [disabled]="isProcessingMap[product.id]">
+  <span *ngIf="!isProcessingMap[product.id]">
     <i class="fas fa-bolt me-1"></i> Buy Now
   </span>
-  <span *ngIf="isProcessing">
+  <span *ngIf="isProcessingMap[product.id]">
     <i class="fas fa-spinner fa-spin me-1"></i> Processing...
   </span>
 </button>
+
 
 
 

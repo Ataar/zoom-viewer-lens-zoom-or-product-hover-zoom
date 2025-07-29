@@ -153,13 +153,15 @@ export class TodoItemsComponent implements OnInit {
 
 
 
-isProcessing = false;
+isProcessingMap: { [productId: number]: boolean } = {};
 
-byNow(product: any) {
-  this.isProcessing = true;
+
+byNow(product: Product) {
+  const productId = product.id;
+  this.isProcessingMap[productId] = true;
 
   setTimeout(() => {
-    this.isProcessing = false;
+    this.isProcessingMap[productId] = false;
 
     Swal.fire({
       title: 'Proceed to Payment?',
@@ -175,6 +177,7 @@ byNow(product: any) {
     });
   }, 1500);
 }
+
 
 
 
