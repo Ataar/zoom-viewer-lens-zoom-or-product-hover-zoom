@@ -1,95 +1,65 @@
-
-
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" routerLink="" style="padding:0; margin:-8px;">
-    <img src="./assets/web_logo.png" alt="Shop Logo">
-  </a> -->
+<!-- 🔶 Bootstrap Navbar with Angular Routing -->
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand logo-link" routerLink="">
-    <img src="./assets/web_logo.png" alt="Shop Logo" class="logo-img">
-  </a>
+  <!-- 🔸 container: Bootstrap class to center and give padding -->
+  <div class="container">
+
+    <!-- 🔸 Brand/logo - Clicking it navigates to the root path ('') -->
+    <a class="navbar-brand" routerLink="">MyBrand</a>
+
+    <!-- 🔸 Toggle Button (for small screens) -->
+    <button (click)="toggleNavbar()" class="navbar-toggler" type="button">
+      
+      <!-- 🔹 If navbar is closed, show default Bootstrap toggle icon -->
+      <span *ngIf="!navbarOpen" class="navbar-toggler-icon"></span>
+
+      <!-- 🔹 If navbar is open, show custom close (X) icon -->
+      <span *ngIf="navbarOpen" class="close-icon text-white h3">
+        <!-- FontAwesome icon (X mark) -->
+        <i class="fa-solid fa-xmark"></i>
+      </span>  
+    </button>
 
 
-  <!-- Toggle Button -->
-  <button
-    class="navbar-toggler"
-    type="button"
-    [ngClass]="{ 'd-none': isNavbarOpen }"
-    (click)="toggleNavbar()"
-    aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
 
-  <!-- Close Button -->
-  <button
-    class="btn text-white d-lg-none"
-    *ngIf="isNavbarOpen"
-    (click)="toggleNavbar()"
-    style="font-size: 35px; background: none; border: none; position: absolute; right: 20px; top: 10px;"
-    aria-label="Close">
-    &times;
-  </button>
+    <!-- 🔸 Collapse wrapper (responsively expands/collapses menu items) -->
+    <!-- 🔹 [ngClass]: Angular binding to apply dynamic classes -->
+     <!--  Apply 'collapse' when navbar is closed -->
+      <!--  Always include this class -->
+ <!-- Apply 'show' when navbar is open (for expand effect) -->
 
-  <div class="collapse navbar-collapse" [ngClass]="{ show: isNavbarOpen }">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="home">Dashboard</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="products">Products</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="categories">Categories</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="offers">Offers</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="cart">Cart</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="account">My Account</a>
-      </li>
-    </ul>
+    <div [ngClass]="{ 
+      'collapse': !navbarOpen,       
+      'navbar-collapse': true,      
+      'show': navbarOpen           
+    }" id="mainNavbar">
+
+      <!-- 🔹 Nav items list -->
+      <ul class="navbar-nav">
+
+        <!-- 🔸 Dashboard nav item -->
+        <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+          <!-- 🔹 routerLink: defines route to navigate -->
+          <!-- 🔹 routerLinkActive: adds 'active' class when link is active -->
+          <a class="nav-link" routerLink="Dashboard">Dashboard</a>
+        </li>
+
+        <!-- 🔸 Features nav item -->
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="features">Features</a>
+        </li>
+
+        <!-- 🔸 Pricing nav item -->
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="pricing">Pricing</a>
+        </li>
+
+        <!-- 🔸 Contact nav item -->
+        <li class="nav-item" routerLinkActive="active">
+          <a class="nav-link" routerLink="contact">Contact</a>
+        </li>
+
+      </ul>
+    </div>
+
   </div>
 </nav>
-
-
-<!-- ##################################################################################################### -->
-
-<!-- <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-<a class="navbar-brand" routerLink="" style="padding: 0; margin: 0;">
-  <img
-    src="./assets/web_logo.png"
-    alt="Shop Logo"
-    style="width:100px; height: 60px; padding-bottom: 8px;  display: block;">
-</a>
-
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-      <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-        <a class="nav-link" routerLink="home">Dashboard</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="products">Products</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="categories">Categories</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="offers">Offers</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="cart">Cart</a>
-      </li>
-      <li class="nav-item" routerLinkActive="active">
-        <a class="nav-link" routerLink="account">My Account</a>
-      </li>
-    </ul>
-  </div>
-</nav> -->

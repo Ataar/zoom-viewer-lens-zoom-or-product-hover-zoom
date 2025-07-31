@@ -7,19 +7,13 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
-import { HomeComponent } from './components/home/home.component';
-import { TodoItemsComponent } from './components/todo-items/todo-items.component';
-import { TodoFormComponent } from './components/todo-form/todo-form.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ConfirmDialogComponent,
-    HomeComponent,
-    TodoItemsComponent,
-    TodoFormComponent,
-    DashboardComponent
+   DashboardComponent
   ],
   imports: [
     CommonModule,
@@ -36,10 +30,7 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     RouterModule,
     MaterialModule,
     NavbarComponent,
-    HomeComponent,
-    TodoItemsComponent,
-    TodoFormComponent,
-    DashboardComponent
+ DashboardComponent
   ]
 })
 export class SharedModule {}

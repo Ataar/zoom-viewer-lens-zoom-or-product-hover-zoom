@@ -1,124 +1,52 @@
-.bg-dark {
-    background-color: #040505!important;
+/* 🔸 Navbar Toggler Button (Hamburger icon) */
+.navbar-toggler {
+  border: none !important;          // Bootstrap ka default border hata diya
+  outline: none;                    // Outline hata diya (focus par blue glow hata)
+  box-shadow: none;                 // Shadow hata diya for clean look
 }
 
-.navbar-expand-lg 
-{
-    color: white;
-}
-
-
-
-.logo-img {
-  position: relative;
-  // top: 1px; // move image upward as per your need
-  height: 20px; // optional: control logo size
-  margin:-16px 0
-}
-
-@media(min-width:320px) and (max-width:425px)
-{
-  .logo-img {
-  position: relative;
-  // top: 1px; // move image upward as per your need
-  height: 20px; // optional: control logo size
-  margin:-16px -10px
-}
-}
-.navbar-brand img
-{
-width: 80px; 
-height: 70px;
- display: inline-block;
- transform: translateY(-5px);
-}
-
-.nav-link {
-  margin: 6px 25px 0;
-  font-family: georgia;
-}
-.navbar-dark .navbar-nav .nav-link {
-  color: white !important;
-}
-
-.navbar-dark .navbar-brand {
-  color: white !important;
-}
-
+/* 🔸 Custom white hamburger icon */
 .navbar-dark .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='white' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30'%3e%3cpath stroke='%23ffffff' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+  border: 1px solid white;          // Custom border
+  border-radius: 5px;               // Rounded corners
+  padding: 4px;                     // Internal spacing
 }
 
-.navbar-dark .nav-link:hover {
-  color: #f8f9fa !important; /* lighter white on hover */
+/* 🔸 Navigation links (ul.navbar-nav) */
+.navbar-nav {
+  display: flex;                    // Links ko row mein dikhata hai
+  gap: 2rem;                        // Har nav-item ke beech ka gap
+  list-style: none;                // Bullet points remove kiye
+  margin-left: auto;               // Links ko right align karta hai
+  margin-right: -60px;             // Slight shift towards right
+  padding: 0;
+
+  .nav-item {
+    .nav-link {
+      text-decoration: none;       // Underline hata diya
+      color: #fcf2f2;              // Light white color
+      font-weight: 500;            // Slightly bold
+      transition: color 0.3s ease; // Smooth hover effect
+
+      &:hover,
+      &.active {
+        color: #007bff;            // Hover aur active route pe blue
+      }
+    }
+  }
 }
 
+/* 🔸 Responsive Styles for Mobile (max-width: 425px) */
+@media (max-width: 425px) {
+  .navbar-brand {
+    margin: 15px 0;                // Logo ke top/bottom margin increase
+  }
 
-.navbar-dark .navbar-nav .nav-link {
-  color: white !important;
-  position: relative;
-}
-
-.navbar-dark .navbar-nav .nav-link::after {
-  content: '';
-  position: absolute;
-  left: 0px;
-  bottom: 0px;
-  width: 100%;
-  height: 3px;
-  background-color: rgb(222, 253, 48);
-  // background-color: rgb(55, 236, 145);
-  transform: scaleX(0);
-  transform-origin: bottom left;
-  transition: transform 0.3s ease;
-  border-radius: 20px;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover::after {
-  transform: scaleX(1);
-}
-
-@media(min-width:320px)and (max-width:768px)
-{
-   .nav-link {
-  margin: 6px -15px 0;
-  padding: 20px;
-  font-family: georgia;
-}
-
-.navbar-dark .navbar-nav .nav-link {
-  color: white !important;
-  position: relative;
-}
-
-.navbar-dark .navbar-nav .nav-link::after {
-  content: '';
-  position: absolute;
-  left: 12px;
-  bottom: 10px;
-  width: 15%;
-  height: 3px;
-  background-color: rgb(71, 243, 80);
-  transform: scaleX(0);
-  transform-origin: bottom left;
-  transition: transform 0.3s ease;
-}
-
-.navbar-dark .navbar-nav .nav-link:hover::after {
-  transform: scaleX(1);
-}
-
-}
-
-.navbar-dark .navbar-nav .nav-item.active .nav-link {
-  color: #c2ff0a !important;
-  
-  // border-radius: 10px;
-  // background-color: #007bff !important;
-  // padding: 10px 30px;
-}
-
-.navbar-dark .navbar-nav .nav-item.active .nav-link:hover {
-  color: #eb7db9 !important;
-  
+  // Agar aap chahein to nav-link ke liye margin-top add kar sakte hain:
+  // .nav-item {
+  //   .nav-link {
+  //     margin-top: 8px;
+  //   }
+  // }
 }
