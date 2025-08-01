@@ -1,24 +1,37 @@
  
 
 <div class="p-3 text-right">
+
   <button
     class="btn theme-toggle-btn"
     (click)="toggleTheme()"
-    [ngClass]="isDarkMode ? 'dark-mode' : 'light-mode'"
-  >
+    [ngClass]="isDarkMode ? 'dark-mode' : 'light-mode'">
     <i
-      class="fas"
-      [ngClass]="isDarkMode ? 'fa-sun text-warning' : 'fa-moon text-dark'"
-      style="font-size: 1.2rem;"
-    ></i>
+    class="fas"
+    [ngClass]="isDarkMode ? 'fa-sun text-warning' : 'fa-moon text-dark'"
+    style="font-size: 1.2rem;">
+  </i>
+
     <span class="fw-semibold">
       {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
     </span>
+
   </button>
+
 </div>
 
 
-<!-- 
-<h1>Welcome to Theme Toggle</h1>
-<p>This background changes based on your selected mode.</p> -->
 
+
+
+<!-- 
+| Feature             | Role                                                             |
+| ------------------- | ---------------------------------------------------------------- |
+| `(click)="..."`     | Button click hone par method call hota hai (`toggleTheme()`)     |
+| `isDarkMode`        | Component variable jo batata hai ki dark mode active hai ya nahi |
+| `[ngClass]`         | Conditional class binding for styling & icon switch              |
+| `fa-sun`, `fa-moon` | Font Awesome icons for Sun & Moon                                |
+| `text-warning`      | Yellow icon (Bootstrap)                                          |
+| `text-dark`         | Dark icon for contrast                                           |
+| `fw-semibold`       | Slightly bold text (Bootstrap 5)                                 |
+ -->
