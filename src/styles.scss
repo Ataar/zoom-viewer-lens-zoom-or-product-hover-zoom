@@ -11,3 +11,39 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
+// .main-container {
+//   padding: 20px;
+//   min-height: 100vh;
+//   transition: background-color 0.3s ease, color 0.3s ease;
+
+//   &.light-theme {
+//     background-color: #ffffff;
+//     color: #000000;
+//   }
+
+//   &.dark-theme {
+//     background-color: #121212;
+//     color: #ffffff;
+//   }
+
+//   button {
+//     padding: 10px 20px;
+//     margin-bottom: 20px;
+//     border: none;
+//     cursor: pointer;
+//     background-color: #888;
+//     color: #ffffff;
+//     border-radius: 4px;
+//   }
+// }
+body.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+  transition: all 0.3s ease;
+}

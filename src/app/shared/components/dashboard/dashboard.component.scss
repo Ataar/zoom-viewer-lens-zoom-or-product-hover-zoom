@@ -1,25 +1,26 @@
-.main-container {
-  padding: 20px;
-  min-height: 100vh;
-  transition: background-color 0.3s ease, color 0.3s ease;
-
-  &.light-theme {
-    background-color: #ffffff;
-    color: #000000;
-  }
-
-  &.dark-theme {
-    background-color: #121212;
-    color: #ffffff;
-  }
-
-  button {
-    padding: 10px 20px;
-    margin-bottom: 20px;
-    border: none;
-    cursor: pointer;
-    background-color: #888;
-    color: #fff;
-    border-radius: 4px;
-  }
+/* Common styling */
+.theme-toggle-btn {
+  border: 1px solid rgb(252, 196, 196);
+  padding: 8px 16px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
 }
+
+/* Light mode */
+.theme-toggle-btn.light-mode {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+/* Dark mode */
+.theme-toggle-btn.dark-mode {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+

@@ -1,3 +1,38 @@
+.logo-img
+{
+   position: relative;
+  // top: 1px; // move image upward as per your need
+  height: 20px; // optional: control logo size
+  margin:-16px -60px
+}
+
+.navbar-brand img
+{
+width: 70px; 
+height: 60px;
+ display: inline-block;
+ transform: translateY(-2px);
+}
+
+@media(min-width:320px) and (max-width:425px)
+{
+ .navbar-brand  {
+  position: relative;
+  // top: 1px; // move image upward as per your need
+  height: 10px; // optional: control logo size
+  margin:0px -10px;
+  // padding:-10px
+}
+
+.navbar-brand .logo-img
+{
+  margin:-20px -6px;
+   transform: translateY(-12px);
+}
+
+}
+
+
 /* 🔸 Navbar Toggler Button (Hamburger icon) */
 .navbar-toggler {
   border: none !important;          // Bootstrap ka default border hata diya
@@ -28,11 +63,8 @@
       color: #fcf2f2;              // Light white color
       font-weight: 500;            // Slightly bold
       transition: color 0.3s ease; // Smooth hover effect
-
-      &:hover,
-      &.active {
-        color: #007bff;            // Hover aur active route pe blue
-      }
+     font-family: Georgia;
+     letter-spacing: 1px;
     }
   }
 }
@@ -49,4 +81,16 @@
   //     margin-top: 8px;
   //   }
   // }
+}
+
+
+.navbar-dark .navbar-nav .nav-item.active .nav-link {
+  color: #3de227 !important;
+  
+}
+
+
+.navbar-dark .navbar-nav .nav-link.active::after {
+  transform: scaleX(1);
+  // background-color: #c2ff0a;
 }

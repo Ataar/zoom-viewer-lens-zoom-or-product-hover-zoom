@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
 
    // 🔁 ngOnInit: Angular ka lifecycle hook jo component load hote hi run hota hai
   ngOnInit(): void {
-    // abhi yahan koi logic nahi hai
+    
   }
 
 

@@ -8,12 +8,18 @@ import { MaterialModule } from './material/material.module';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { ConfirmDialogComponent } from './components/confirm-dialog/confirm-dialog.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { FeatureComponent } from './components/feature/feature.component';
+import { PricingComponent } from './components/pricing/pricing.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
     NavbarComponent,
     ConfirmDialogComponent,
-   DashboardComponent
+   DashboardComponent,
+   FeatureComponent,
+   PricingComponent,
+   ContactComponent
   ],
   imports: [
     CommonModule,

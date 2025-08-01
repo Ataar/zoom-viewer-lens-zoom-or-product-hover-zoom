@@ -1,6 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './shared/components/dashboard/dashboard.component';
+import { FeatureComponent } from './shared/components/feature/feature.component';
+import { ContactComponent } from './shared/components/contact/contact.component';
+import { PricingComponent } from './shared/components/pricing/pricing.component';
 
 const routes: Routes = [ 
 
@@ -14,6 +17,22 @@ const routes: Routes = [
   {
     path:'dashboard',
     component:DashboardComponent
+  },
+
+ 
+  {
+     path:'feature',
+     component:FeatureComponent
+  },
+
+  {
+    path:'pricing',
+    component:PricingComponent,
+  },
+
+  {
+    path:'contact',
+    component:ContactComponent
   }
  
 

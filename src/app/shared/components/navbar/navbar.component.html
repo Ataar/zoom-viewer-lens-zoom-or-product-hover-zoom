@@ -4,7 +4,9 @@
   <div class="container">
 
     <!-- 🔸 Brand/logo - Clicking it navigates to the root path ('') -->
-    <a class="navbar-brand" routerLink="">MyBrand</a>
+    <a class="navbar-brand" routerLink="">
+    <img src="assets/F2.png" alt=""class="logo-img">
+    </a>
 
     <!-- 🔸 Toggle Button (for small screens) -->
     <button (click)="toggleNavbar()" class="navbar-toggler" type="button">
@@ -40,12 +42,12 @@
         <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
           <!-- 🔹 routerLink: defines route to navigate -->
           <!-- 🔹 routerLinkActive: adds 'active' class when link is active -->
-          <a class="nav-link" routerLink="Dashboard">Dashboard</a>
+          <a class="nav-link" routerLink="dashboard">Dashboard</a>
         </li>
 
         <!-- 🔸 Features nav item -->
         <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" routerLink="features">Features</a>
+          <a class="nav-link" routerLink="feature">Features</a>
         </li>
 
         <!-- 🔸 Pricing nav item -->
