@@ -11,15 +11,3 @@
 // html, body { height: 100%; }
 // body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-
-body.light-mode {
-  background-color: #ffffff;
-  color: #000000;
-  transition: all 2.5s ease;
-}
-
-body.dark-mode {
-  background-color: #121212;
-  color: #ffffff;
-  transition: all 2.5s ease;
-}

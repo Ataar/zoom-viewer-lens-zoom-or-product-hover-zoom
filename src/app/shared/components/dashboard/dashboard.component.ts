@@ -1,77 +1,75 @@
-// 📦 Import required Angular core modules
-import { Component, OnInit, Renderer2, OnDestroy } from '@angular/core';
+import { Component, OnInit, AfterViewInit, Renderer2, OnDestroy, ViewChild, ElementRef } from '@angular/core';
 
-// 📌 Decorator to define this as a Component
+
 @Component({
-  selector: 'app-dashboard',                 // 👈 Custom tag <app-dashboard>
-  templateUrl: './dashboard.component.html', // 🔗 Path to HTML template
-  styleUrls: ['./dashboard.component.scss']  // 🎨 Path to SCSS styles
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.scss']
 })
-
-// 📦 Class implements OnInit and OnDestroy lifecycle hooks
-export class DashboardComponent implements OnInit, OnDestroy {
-
-  // 🔁 Track current theme state (true = dark, false = light)
-  isDarkMode = false;
-
-  // 💉 Inject Renderer2 to safely manipulate DOM (especially <body> tag)
-  constructor(private renderer: Renderer2) {}
-
-// ✅ Angular lifecycle hook that runs when the component is initialized (page load)
-ngOnInit(): void {
-  // 🔹 Get the value of 'theme' from localStorage (it could be 'dark' or 'light')
-  const savedTheme = localStorage.getItem('theme'); // 📦 stored as a string
-
-  // 🔹 Check if the saved theme is 'dark'; if yes, set isDarkMode = true
-  this.isDarkMode = savedTheme === 'dark'; // ✅ enables dark mode if matched
-
-  // 🔹 Apply the theme class to the <body> tag accordingly
-  this.updateBodyClass();
-}
-
-// ✅ Method to toggle between light and dark mode
-toggleTheme(): void {
-  // 🔄 Flip the value of isDarkMode (true -> false, false -> true)
-  this.isDarkMode = !this.isDarkMode;
-
-  // 💾 Save the current theme to localStorage
-  // If dark mode is on, store 'dark', else store 'light'
-  localStorage.setItem('theme', this.isDarkMode ? 'dark' : 'light');
-
-  // 🔁 Update the <body> tag's CSS class to reflect the current theme
-  this.updateBodyClass();
-}
-
-
-  // ⚙️ Helper function to manage <body> classes
-  updateBodyClass(): void {
-    const body = document.body;
-
-   if (this.isDarkMode) {
-  // 🌙 If dark mode is enabled (isDarkMode is true)
-
-  // ✅ Add the CSS class 'dark-mode' to the <body> element
-  this.renderer.addClass(body, 'dark-mode');
-
-  // ❌ Remove the CSS class 'light-mode' from the <body> element if it exists
-  this.renderer.removeClass(body, 'light-mode');
-
-} else {
-  // ☀️ If light mode is enabled (isDarkMode is false)
-
-  // ✅ Add the CSS class 'light-mode' to the <body> element
-  this.renderer.addClass(body, 'light-mode');
-
-  // ❌ Remove the CSS class 'dark-mode' from the <body> element if it exists
-  this.renderer.removeClass(body, 'dark-mode');
-}
-
+export class DashboardComponent implements OnInit {
+  ngOnInit(): void {
+    throw new Error('Method not implemented.');
   }
 
-  // ❌ Lifecycle method: runs when component is destroyed
-  ngOnDestroy(): void {
-    // 🧹 Clean up any leftover theme classes on <body>
-    this.renderer.removeClass(document.body, 'dark-mode');
-    this.renderer.removeClass(document.body, 'light-mode');
+
+
+ @ViewChild('image', { static: true }) imageRef!: ElementRef;
+  @ViewChild('lens', { static: true }) lensRef!: ElementRef;
+  @ViewChild('result', { static: true }) resultRef!: ElementRef;
+
+  imageSrc = 'https://i.pinimg.com/736x/2f/b3/6e/2fb36ec606e18fa38e05485f92f781eb.jpg'; // 🖼️ Replace with your image path
+  cx = 0;
+  cy = 0;
+
+  onMouseEnter() {
+    this.lensRef.nativeElement.style.display = 'block';
+    this.resultRef.nativeElement.style.display = 'block';
   }
+
+  onMouseLeave() {
+    this.lensRef.nativeElement.style.display = 'none';
+    this.resultRef.nativeElement.style.display = 'none';
+  }
+
+  onMouseMove(e: MouseEvent) {
+    const img = this.imageRef.nativeElement;
+    const lens = this.lensRef.nativeElement;
+    const result = this.resultRef.nativeElement;
+
+    const pos = this.getCursorPos(e, img);
+    let x = pos.x - lens.offsetWidth / 2;
+    let y = pos.y - lens.offsetHeight / 2;
+
+    if (x > img.width - lens.offsetWidth) x = img.width - lens.offsetWidth;
+    if (x < 0) x = 0;
+    if (y > img.height - lens.offsetHeight) y = img.height - lens.offsetHeight;
+    if (y < 0) y = 0;
+
+    lens.style.left = x + 'px';
+    lens.style.top = y + 'px';
+    result.style.backgroundPosition = `-${x * this.cx}px -${y * this.cy}px`;
+  }
+
+  ngAfterViewInit() {
+    const img = this.imageRef.nativeElement;
+    const lens = this.lensRef.nativeElement;
+    const result = this.resultRef.nativeElement;
+
+    this.cx = result.offsetWidth / lens.offsetWidth;
+    this.cy = result.offsetHeight / lens.offsetHeight;
+
+    result.style.backgroundImage = `url('${this.imageSrc}')`;
+    result.style.backgroundSize = `${img.width * this.cx}px ${img.height * this.cy}px`;
+  }
+
+  private getCursorPos(e: MouseEvent, img: HTMLElement) {
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    return { x, y };
+  }
+
+
 }
+
+

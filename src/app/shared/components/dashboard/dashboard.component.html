@@ -1,37 +1,11 @@
- 
+<div class="image-container"
+     (mousemove)="onMouseMove($event)"
+     (mouseenter)="onMouseEnter()"
+     (mouseleave)="onMouseLeave()">
 
-<div class="p-3 text-right">
+  <img #image [src]="imageSrc" alt="Product">
 
-  <button
-    class="btn theme-toggle-btn"
-    (click)="toggleTheme()"
-    [ngClass]="isDarkMode ? 'dark-mode' : 'light-mode'">
-    <i
-    class="fas"
-    [ngClass]="isDarkMode ? 'fa-sun text-warning' : 'fa-moon text-dark'"
-    style="font-size: 1.2rem;">
-  </i>
-
-    <span class="fw-semibold">
-      {{ isDarkMode ? 'Light Mode' : 'Dark Mode' }}
-    </span>
-
-  </button>
-
+  <div #lens class="lens"></div>
 </div>
 
-
-
-
-
-<!-- 
-| Feature             | Role                                                             |
-| ------------------- | ---------------------------------------------------------------- |
-| `(click)="..."`     | Button click hone par method call hota hai (`toggleTheme()`)     |
-| `isDarkMode`        | Component variable jo batata hai ki dark mode active hai ya nahi |
-| `[ngClass]`         | Conditional class binding for styling & icon switch              |
-| `fa-sun`, `fa-moon` | Font Awesome icons for Sun & Moon                                |
-| `text-warning`      | Yellow icon (Bootstrap)                                          |
-| `text-dark`         | Dark icon for contrast                                           |
-| `fw-semibold`       | Slightly bold text (Bootstrap 5)                                 |
- -->
+<div #result class="result"></div>
