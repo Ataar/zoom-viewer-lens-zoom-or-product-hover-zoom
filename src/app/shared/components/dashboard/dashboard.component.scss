@@ -32,3 +32,33 @@
   background-repeat: no-repeat;
   display: none;
 }
+@media (max-width: 768px) {
+  .result {
+    position: relative;
+    top: 20px;
+    left: 0;
+    width: 100%;
+    height: 300px;
+    margin-top: 1rem;
+  }
+
+  .image-container {
+    max-width: 100%;
+  }
+
+  .image-container .lens {
+    width: 50%;
+    height: 50%;
+  }
+}
+
+@media (max-width: 480px) {
+  .result {
+    height: 200px;
+  }
+
+  .image-container .lens {
+    width: 60%;
+    height: 60%;
+  }
+}
